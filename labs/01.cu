@@ -9,6 +9,8 @@
 
 #define N 1000
 
+using std;
+
 //
 // A function marked __global__
 // runs on the GPU but can be called from
