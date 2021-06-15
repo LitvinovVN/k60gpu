@@ -9,7 +9,7 @@
 
 #define N 1000
 
-using std;
+using namespace std;
 
 //
 // A function marked __global__
