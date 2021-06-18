@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-2
-3
 #include <errno.h>
 #include <unistd.h>
 #include <pthread.h>
@@ -60,7 +58,7 @@ typedef struct tag_data_t {
  double *sum;
 } data_t;
 static int nt, ng, ngb, ngt, nt_max, nd_max; 
-4
+
 static data_t *ThreadDtArray;
 static pthread_t *ThreadHnArray;
 static pthread_mutex_t mut = PTHREAD_MUTEX_INITIALIZER;
@@ -114,7 +112,7 @@ void ThreadWork()
  for (i=0; i<nt; i++)
  if (pthread_join(ThreadHnArray[i],0))
  mpierr("Can not close thread",mp,4); 
-5
+
  free(ThreadHnArray);
  free(ThreadDtArray);
  return;
@@ -167,7 +165,7 @@ int main(int argc, char *argv[])
  }
  if (argc>4) {
  i = sscanf(argv[4],"%d",&ngt); 
-6
+
  if (ngt<1) ngt = 1;
  }
  if (mode==0) {
