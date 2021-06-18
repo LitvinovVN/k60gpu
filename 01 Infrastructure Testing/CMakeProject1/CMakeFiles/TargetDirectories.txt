@@ -1,3 +1,0 @@
-C:/!MyProjects/k60gpu/01 Infrastructure Testing/CMakeProject1/CMakeFiles/ALL_BUILD.dir
-C:/!MyProjects/k60gpu/01 Infrastructure Testing/CMakeProject1/CMakeFiles/ZERO_CHECK.dir
-C:/!MyProjects/k60gpu/01 Infrastructure Testing/CMakeProject1/CMakeProject1/CMakeFiles/CMakeProject1.dir
