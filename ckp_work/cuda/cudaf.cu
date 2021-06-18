@@ -19,7 +19,6 @@ CUDA_C_PREF int MyCudaDevCount()
  return deviceCount;
 }
 CUDA_C_PREF int MyCudaSetDev(int device) 
-7
 {
  cudaError_t get;
  get = cudaSetDevice(device);
@@ -72,7 +71,6 @@ CUDA_C_PREF int MyCudaProcess(int mp, int mt,
  if (get != cudaSuccess) return 6;
  get = cudaFreeHost(S_CPU);
  if (get != cudaSuccess) return 7; 
-8
  t = MyTime() - t;
  fprintf(stderr,"[%02d,%02d]: time=%.6lf\n",mp,mt,t);
  return 0;
@@ -130,7 +128,6 @@ __global__ void MyCudaProcessReal(int i1, int i2,
  __syncthreads();
  j /= 2;
  } 
-9
  if (cacheIndex == 0)
  DATAOUT[blockIdx.x] = cache[0];
  __syncthreads();
