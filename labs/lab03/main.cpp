@@ -35,6 +35,7 @@ int main(int argc, char* argv[]){
 	std::cout<<"res_gpu = "<<res_gpu<<" (rank = "<<rank<<")"<<std::endl;
 	std::cout<<"res_cpu = "<<res_cpu<<" (rank = "<<rank<<")"<<std::endl;
 
+	MPI_BARRIER(MPI_COMM_WORLD);
 
 	if(rank == 0)
 	{
