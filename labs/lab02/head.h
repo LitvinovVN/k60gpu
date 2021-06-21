@@ -3,4 +3,4 @@
 //#include <cuda.h>
 
 #include "cpu.cpp"
-#include "gpu.cu"
+#include "gpu.h"

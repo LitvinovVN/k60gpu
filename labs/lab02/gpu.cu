@@ -6,7 +6,7 @@ __global__ void mult(int x, int y, int *res) {
 	*res = x * y;	
 }
 
-
+extern "C"
 int gpu(int x, int y){
 	int *dev_res;	
 	int res = 0;	
