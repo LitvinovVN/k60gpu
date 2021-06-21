@@ -1,0 +1,8 @@
+rm *.o main
+echo '-------------'
+nvcc --compiler-options -O3 -arch sm_70 --ptxas-options=-v -c mygpu.cu
+echo '-------------'
+mpicc -O3 -lpthread -c main.c
+echo '-------------'
+mpicc -L/usr/local/cuda/lib64 -lcudart -lm -o myapp main.o
+echo '-------------'
