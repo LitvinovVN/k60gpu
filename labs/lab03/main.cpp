@@ -37,6 +37,11 @@ int main(int argc, char* argv[]){
 
 	MPI_Barrier(MPI_COMM_WORLD);
 
+	int nthreads = std::thread::hardware_concurrency();
+	std::cout<<"hardware_concurrency() returned "<<nthreads<<" (rank = "<<rank<<")"<<std::endl;
+
+	MPI_Barrier(MPI_COMM_WORLD);
+
 	if(rank == 0)
 	{
 		std::vector<std::thread> threads;
