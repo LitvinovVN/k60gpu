@@ -1,1 +1,1 @@
-
+#define WIN_PLATFORM 
