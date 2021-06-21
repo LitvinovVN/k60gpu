@@ -2,5 +2,5 @@
 #include <mpi.h>
 //#include <cuda.h>
 
-#include "cpu.cpp"
+#include "cpu.h"
 #include "gpu.h"
