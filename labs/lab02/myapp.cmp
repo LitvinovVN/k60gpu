@@ -9,10 +9,10 @@ nvcc --compiler-options -O3 -arch sm_70 --ptxas-options=-v -c gpu.cu
 
 echo '------ mpicxx -show -------'
 mpicxx -show
-echo '------- Compiling cpu.cpp into cpu.o; main.cu into main.o ------'
+echo '------- Compiling cpu.cpp into cpu.o; main.cpp into main.o ------'
 mpicxx -O3 -c cpu.cpp main.cpp
 echo '-------------'
-mpicxx -o myapp main.o
+mpicxx -o myapp main.o cpu.o gpu.o
 echo '-------------'
 
 mpirun -np 8 ./myapp
