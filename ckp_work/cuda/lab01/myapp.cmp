@@ -11,3 +11,8 @@ mpicxx -o myapp main.o
 echo '-------------'
 
 mpirun -np 8 ./myapp
+
+echo '-------------------'
+echo '-----RESULTS-------'
+echo '-------------------'
+cat ./myapp.1/output
