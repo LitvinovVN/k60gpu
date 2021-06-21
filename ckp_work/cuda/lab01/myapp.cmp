@@ -1,5 +1,5 @@
 git pull
-rm myapp.1
+rm -r myapp.1
 rm *.o myapp
 echo '-------------'
 mpicxx -O3 -lpthread -c main.c
