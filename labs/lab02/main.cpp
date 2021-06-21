@@ -3,8 +3,8 @@
 int main(int argc, char* argv[]){
 	
 	int rank, size;
-	int x = 9999;
-	int y = 9999;
+	int x = 25;
+	int y = 20;
 	
 	MPI_Init (&argc, &argv);
 	MPI_Comm_rank (MPI_COMM_WORLD, &rank);//номер текущего процесса
