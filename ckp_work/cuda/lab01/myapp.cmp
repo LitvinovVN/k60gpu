@@ -12,6 +12,9 @@ echo '-------------'
 
 mpirun -np 8 ./myapp
 
+echo '----- sleep 5 seconds -------'
+sleep 5
+
 echo '-------------------'
 echo '-----RESULTS-------'
 echo '-------------------'
