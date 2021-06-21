@@ -11,15 +11,21 @@ nvcc --compiler-options -O3 -arch sm_70 --ptxas-options=-v -c gpu.cu
 
 echo '------ mpicxx -show -------'
 mpicxx -show
-echo '------- Compiling cpu.cpp into cpu.o; main.cpp into main.o ------'
-mpicxx -O3 -c cpu.cpp main.cpp
-echo '-------------'
+echo '-------------\n'
+echo '------- Compiling cpu.cpp into cpu.o ------'
+mpicxx -O3 -c cpu.cpp
+echo '-------------\n'
+echo '------- Compiling main.cpp into main.o ------'
+mpicxx -O3 -c main.cpp
+echo '-------------\n'
+echo '------ Creating executable file myapp -------'
 mpicxx -o myapp main.o cpu.o gpu.o
-echo '-------------'
+echo '-------------\n'
 
+echo '------ Starting myapp -------'
 mpirun -np 8 ./myapp
 
-echo '----- sleep 5 seconds -------'
+echo '\n\n----- Sleeping 5 seconds -------\n'
 sleep 5
 
 echo '-------------------'
