@@ -1,8 +1,10 @@
-rm *.o main
+git pull
+rm myapp.1
+rm *.o myapp
 echo '-------------'
-nvcc --compiler-options -O3 -arch sm_70 --ptxas-options=-v -c mygpu.cu
+mpicxx -O3 -lpthread -c main.c
 echo '-------------'
-mpicc -O3 -lpthread -c main.c
+mpicxx -o myapp main.o
 echo '-------------'
-mpicc -L/usr/local/cuda/lib64 -lcudart -lm -o myapp main.o
-echo '-------------'
+
+mpirun -n 8 ./myapp
