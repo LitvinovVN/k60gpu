@@ -1,4 +1,4 @@
-#include "cpu.cpp"
+#include "cpu.h"
 
 int cpu(int x, int y){
         int res;
