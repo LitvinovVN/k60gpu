@@ -1,5 +1,11 @@
 #include "head.h"
 
+
+std::mutex mtx;
+static int counter = 0;
+static const int MAX_COUNTER_VAL = 100;
+
+
 int main(int argc, char* argv[]){
 	
 	int rank, size;
@@ -18,7 +24,7 @@ int main(int argc, char* argv[]){
 
 
 
-	
+
 	
 	MPI_Finalize();
 	return 0;
