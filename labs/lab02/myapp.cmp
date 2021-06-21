@@ -9,8 +9,8 @@ nvcc --compiler-options -O3 -arch sm_70 --ptxas-options=-v -c gpu.cu
 
 echo '------ mpicxx -show -------'
 mpicxx -show
-echo '------- Compiling main.c into main.o ------'
-mpicxx -O3 -c main.c
+echo '------- Compiling main.cu into main.o ------'
+mpicxx -O3 -c main.cu
 echo '-------------'
 mpicxx -o myapp main.o
 echo '-------------'
