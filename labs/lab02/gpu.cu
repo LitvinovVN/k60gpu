@@ -2,6 +2,8 @@
 #include <iostream>
 #include <stdio.h>
 
+#include "gpu.h"
+
 __global__ void mult(int x, int y, int *res) {	
 	*res = x * y;	
 }
