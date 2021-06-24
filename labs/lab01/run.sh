@@ -10,7 +10,7 @@ echo '-------------'
 
 echo '------- Starting myapp in 1 node with 4 cpu per node with maxtime 60 minutes ------'
 echo '------- mpirun -np 4 -maxtime 60 ./myapp --------'
-mpirun -np 4 -stderr ./main_cpu_001.err ./myapp
+mpirun -np 4 ./myapp
 
 echo '------- mpirun -np 1 -ppn 1 -maxtime 60 ./myapp --------'
 mpirun -np 1 -ppn 1 -maxtime 60 ./myapp
