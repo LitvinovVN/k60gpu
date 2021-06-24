@@ -8,4 +8,4 @@ echo '-------------'
 mpicxx -o myapp main.o
 echo '-------------'
 
-mpirun -np 8 ./myapp
+mpirun -np 9 -ppn 3 -maxtime 60 ./myapp
