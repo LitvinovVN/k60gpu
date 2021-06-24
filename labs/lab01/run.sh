@@ -1,8 +1,7 @@
 cat description.md
 
 git pull
-rm -r myapp.1
-rm *.o myapp
+bash clear.sh
 
 echo '------ mpicxx -show -------'
 mpicxx -show
