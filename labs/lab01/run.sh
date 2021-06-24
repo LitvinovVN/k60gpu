@@ -18,6 +18,9 @@ mpirun -np 1 -ppn 4 -maxtime 60 ./myapp
 echo '------- mpirun -np 2 -ppn 1 -maxtime 60 ./myapp --------'
 mpirun -np 2 -ppn 1 -maxtime 60 ./myapp
 
+echo '------- Task list: mps ---------'
+mps
+
 echo '------- Status of executed task: mqtest myapp.1 --------'
 mqtest myapp.1
 mqtest myapp.2
