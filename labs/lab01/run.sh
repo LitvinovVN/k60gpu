@@ -1,7 +1,7 @@
 git pull
 
 cat description.md
-
+echo ''
 echo '------- Compiling main.c into main.o: mpicxx -O3 -c main.c ------'
 mpicxx -O3 -c main.c
 echo '-------- mpicxx -o myapp main.o -----'
