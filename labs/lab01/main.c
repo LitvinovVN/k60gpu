@@ -12,13 +12,15 @@ int main (int argc, char* argv[])
     if(rank==0)
         std::cout << "First MPI program." << " Size is " << size << std::endl;
 
-    char hostname[50];    
-    gethostname(hostname, 50);
     double t = MPI_Wtime();
 
+    char hostname[50];    
+    gethostname(hostname, 50);
+
     pid_t pid = getpid();
+
         
-    fprintf(stderr, "Rank: %d. Hostname: %s. Process ID: %d. Time: %lf\n", rank, hostname, pid, t);
+    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. \n", t, hostname, rank, pid);
     
     MPI_Finalize();
     return 0;
