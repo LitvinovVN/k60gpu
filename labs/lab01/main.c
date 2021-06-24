@@ -11,8 +11,10 @@ int main (int argc, char* argv[])
     if(rank==0)
         std::cout<<"Hello MPI!!!"<<" Size is "<<size<<std::endl;
 
+    char hostname[50];    
+    gethostname(hostname, 50);    
 
-	std::cout << " My rank is " << rank << "; hostname: " << gethostname() << std::endl;
+	std::cout << " My rank is " << rank << "; hostname: " << hostname << std::endl;
     MPI_Finalize();
     return 0;
 }
