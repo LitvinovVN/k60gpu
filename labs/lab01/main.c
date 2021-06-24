@@ -17,9 +17,9 @@ int main (int argc, char* argv[])
     double t = MPI_Wtime();
 
     std::cout << std::fixed;
-	std::cout << " My rank is " << rank << "; hostname: " << hostname << "; Time: " << t << std::endl;
+	std::cout << "Rank: " << rank << "; Hostname: " << hostname << "; Time: " << t << std::endl;
     
-    fprintf(stderr, "Time: %lf\n",t);
+    fprintf(stderr, "Rank: %d. Hostname: %s. Time: %lf\n",rank, hostname, t);
     
     MPI_Finalize();
     return 0;
