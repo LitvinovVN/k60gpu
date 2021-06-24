@@ -10,15 +10,12 @@ int main (int argc, char* argv[])
     MPI_Comm_size (MPI_COMM_WORLD, &size);
     
     if(rank==0)
-        std::cout << "Hello MPI!!!" << " Size is " << size << std::endl;
+        std::cout << "First MPI program." << " Size is " << size << std::endl;
 
     char hostname[50];    
     gethostname(hostname, 50);    
     double t = MPI_Wtime();
-
-    std::cout << std::fixed;
-	std::cout << "Rank: " << rank << "; Hostname: " << hostname << "; Time: " << t << std::endl;
-    
+        
     fprintf(stderr, "Rank: %d. Hostname: %s. Time: %lf\n",rank, hostname, t);
     
     MPI_Finalize();
