@@ -12,6 +12,14 @@ echo '------- Starting myapp in 1 node with 1 cpu per node with maxtime 60 minut
 echo '------- mpirun -np 1 -ppn 1 -maxtime 60 ./myapp --------'
 mpirun -np 1 -ppn 1 -maxtime 60 ./myapp
 
+echo '------- mpirun -np 1 -ppn 4 -maxtime 60 ./myapp --------'
+mpirun -np 1 -ppn 4 -maxtime 60 ./myapp
+
+echo '------- mpirun -np 2 -ppn 1 -maxtime 60 ./myapp --------'
+mpirun -np 2 -ppn 1 -maxtime 60 ./myapp
+
 echo '------- Status of executed task: mqtest myapp.1 --------'
 mqtest myapp.1
+mqtest myapp.2
+mqtest myapp.3
 echo '------- End of run.sh ------'
