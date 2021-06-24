@@ -13,10 +13,10 @@ echo '------- mpirun -np 4 -maxtime 60 ./myapp --------'
 mpirun -np 4 ./myapp
 
 echo '------- mpirun -np 1 -ppn 1 -maxtime 60 ./myapp --------'
-mpirun -np 1 -ppn 1 -maxtime 60 ./myapp
+mpirun -np 1 -ppn 1 -maxtime 2 ./myapp
 
 echo '------- mpirun -np 2 -ppn 1 -maxtime 60 ./myapp --------'
-mpirun -np 2 -ppn 1 -maxtime 60 ./myapp
+mpirun -np 2 -ppn 1 -maxtime 2 ./myapp
 
 echo '------- Task list: mps ---------'
 mps
