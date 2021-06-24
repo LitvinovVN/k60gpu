@@ -19,7 +19,7 @@ int main (int argc, char* argv[])
     std::cout << std::fixed;
 	std::cout << " My rank is " << rank << "; hostname: " << hostname << "; Time: " << t << std::endl;
     
-    fprintf(stderr, "Time: %d\n",t);
+    fprintf(stderr, "Time: %lf\n",t);
     
     MPI_Finalize();
     return 0;
