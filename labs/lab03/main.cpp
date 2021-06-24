@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
 	if(rank == 0)
 	{
 		std::vector<std::thread> threads;
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < nthreads; i++) {
 			std::thread thr(thread_proc, i);
 			threads.emplace_back(std::move(thr));
 		}
