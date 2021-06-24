@@ -16,6 +16,7 @@ int main (int argc, char* argv[])
     gethostname(hostname, 50);    
     double t = MPI_Wtime();
 
+    std::cout << std::fixed;
 	std::cout << " My rank is " << rank << "; hostname: " << hostname << "; Time: " << t << std::endl;
     MPI_Finalize();
     return 0;
