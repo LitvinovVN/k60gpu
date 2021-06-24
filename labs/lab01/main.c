@@ -12,7 +12,7 @@ int main (int argc, char* argv[])
         std::cout<<"Hello MPI!!!"<<" Size is "<<size<<std::endl;
 
 
-	std::cout<<" My rank is "<<rank<<std::endl;
+	std::cout << " My rank is " << rank << "; hostname: " << gethostname() << std::endl;
     MPI_Finalize();
     return 0;
 }
