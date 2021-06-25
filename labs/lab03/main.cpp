@@ -11,6 +11,7 @@ using namespace std;
 
 void thread_proc(int tnum, char* hostname, int rank) {
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 int main (int argc, char* argv[])
