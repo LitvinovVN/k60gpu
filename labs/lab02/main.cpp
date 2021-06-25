@@ -1,9 +1,7 @@
 #include <mpi.h>
 #include <iostream> 
 #include <unistd.h>
-//#include <atomic>
-//#include <vector>
-//#include <thread>
+#include <thread>
 
 using namespace std;
 
