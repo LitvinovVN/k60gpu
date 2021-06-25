@@ -33,6 +33,7 @@ int main (int argc, char* argv[])
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    double t1 = MPI_Wtime();
     std::vector<std::thread> threads;
 	for(int i = 0; i < nHardwareThreads-1; i++) {
 		std::thread thr(thread_proc, i, hostname, rank);
@@ -42,6 +43,8 @@ int main (int argc, char* argv[])
 	for(auto& thr : threads) {
 		thr.join();
 	}
+    double t2 = MPI_Wtime();
+    printf("That took %f seconds\n",t2-t1);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
