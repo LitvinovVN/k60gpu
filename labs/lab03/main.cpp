@@ -30,6 +30,8 @@ int main (int argc, char* argv[])
     int nHardwareThreads = std::thread::hardware_concurrency();
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Hardware threads: %d \n", t, hostname, rank, pid, nHardwareThreads);
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
     std::vector<std::thread> threads;
 	for(int i = 0; i < nHardwareThreads-1; i++) {
 		std::thread thr(thread_proc, i, hostname, rank);
@@ -47,9 +49,8 @@ int main (int argc, char* argv[])
     int res_gpu = gpu(x, y);	
 	int res_cpu = cpu(x, y);
 	
-	std::cout<<"res_gpu = "<<res_gpu<<" (rank = "<<rank<<")"<<std::endl;
-	std::cout<<"res_cpu = "<<res_cpu<<" (rank = "<<rank<<")"<<std::endl;
-
+    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. res_gpu = %d.  res_cpu = %d\n", t, hostname, rank, pid, res_gpu, res_cpu);
+	
 	MPI_Barrier(MPI_COMM_WORLD);
 
     MPI_Finalize();
