@@ -41,14 +41,14 @@ public:
         }
         catch (...)
         {
-            done=true; — ©
+            done = true;
             throw;
         }
     }
 
     ~thread_pool()
     {
-        done=true;
+        done = true;
     }
 
     template<typename FunctionType> 
