@@ -27,8 +27,9 @@ int main (int argc, char* argv[])
     char hostname[50];    
     gethostname(hostname, 50);
     pid_t pid = getpid();
+    std::thread::id this_id = std::this_thread::get_id();
     int nHardwareThreads = std::thread::hardware_concurrency();
-    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Hardware threads: %d \n", t, hostname, rank, pid, nHardwareThreads);
+    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Hardware threads: %d. this_id: %d \n", t, hostname, rank, pid, nHardwareThreads, this_id);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
