@@ -10,9 +10,9 @@
 using namespace std;
 
 void thread_proc(int tnum, char* hostname, int rank) {
-    fprintf(stderr, "thread_proc START. Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum);
+    double start = MPI_Wtime();
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    fprintf(stderr, "thread_proc END. Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum);
+    fprintf(stderr, "Time: %lf s. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime() - start, hostname, rank, getpid(), tnum);
 }
 
 int main (int argc, char* argv[])
