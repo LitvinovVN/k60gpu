@@ -3,7 +3,7 @@ git pull
 cat description.md
 echo ''
 echo '------- Compiling main.c into main.o: mpicxx -O3 -c main.cpp ------'
-mpicxx -O3 -c main.cpp
+mpicxx -O3 -std=c++11 -c main.cpp
 echo '-------- mpicxx -o myapp main.o -----'
 mpicxx -o myapp main.o
 echo '-------------'
