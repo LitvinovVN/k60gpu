@@ -15,7 +15,7 @@ std::mutex g_lock;
 void thread_proc(int tnum, char* hostname, int rank) {
     g_lock.lock();
     double start = MPI_Wtime();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::seconds(rand()%10));
     fprintf(stderr, "Time: %lf s. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime() - start, hostname, rank, getpid(), tnum);
     g_lock.unlock();
 }
