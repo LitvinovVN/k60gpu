@@ -1,6 +1,7 @@
 #include <mpi.h>
 #include <iostream> 
 #include <unistd.h>
+#include <atomic>
 
 using namespace std;
 
