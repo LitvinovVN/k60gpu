@@ -2,6 +2,7 @@
 #include <iostream> 
 #include <unistd.h>
 #include <atomic>
+#include <vector>
 
 using namespace std;
 
