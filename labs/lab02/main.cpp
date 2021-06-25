@@ -35,7 +35,7 @@ int main (int argc, char* argv[])
 	
 	for(auto& thr : threads) {
 		thr.join();
-	}    	
+	}
 
     MPI_Finalize();
     return 0;
