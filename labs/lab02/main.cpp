@@ -7,7 +7,7 @@
 
 using namespace std;
 
-template<typename Т> 
+template<typename Т>
 class threadsafe_queue 
 {
 private:
