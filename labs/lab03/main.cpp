@@ -18,7 +18,7 @@ void thread_proc(int tnum, char* hostname, int rank) {
 int main (int argc, char* argv[])
 {
     int rank, size, provided;
-    MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);
+    MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &provided);
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
     
