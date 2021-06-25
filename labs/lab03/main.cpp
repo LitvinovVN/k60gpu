@@ -42,6 +42,8 @@ int main (int argc, char* argv[])
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    int x = rank;
+    int y = 100;
     int res_gpu = gpu(x, y);	
 	int res_cpu = cpu(x, y);
 	
