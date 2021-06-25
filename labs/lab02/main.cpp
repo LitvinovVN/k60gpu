@@ -18,7 +18,7 @@ int main (int argc, char* argv[])
     MPI_Comm_size (MPI_COMM_WORLD, &size);
     
     if(rank==0)
-        cout << "First MPI program." << " Size is " << size << endl;
+        cout << "MPI size is " << size << endl;
 
     double t = MPI_Wtime();
     char hostname[50];    
