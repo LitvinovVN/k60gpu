@@ -3,12 +3,14 @@
 #include <unistd.h>
 #include <thread>
 #include <vector>
-std::mutex g_lock;
+#include <mutex>
 
 #include "cpu.h"
 #include "gpu.h"
 
 using namespace std;
+
+std::mutex g_lock;
 
 void thread_proc(int tnum, char* hostname, int rank) {
     g_lock.lock();
