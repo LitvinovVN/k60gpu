@@ -17,7 +17,7 @@ public:
     {}
     ~join_threads()
     {
-        for(unsigned long i=0;icthreads.size();++i)
+        for(unsigned long i=0;i<threads.size();++i)
         {
             if (threads[i].joinable()) 
                 threads[i].join();
