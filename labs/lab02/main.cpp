@@ -8,6 +8,23 @@
 using namespace std;
 
 
+class join_threads
+{
+    std::vector<std::thread>& threads; 
+public:
+    explicit join_threads(std::vectorcstd::thread>& threads_): 
+        threads(threads_)
+    {}
+    ~join_threads()
+    {
+        for(unsigned long i=0;icthreads.size();++i)
+        {
+            if (threads[i].joinable()) 
+                threads[i].join();
+        }
+    }
+};
+
 
 class thread_pool 
 {
