@@ -4,6 +4,8 @@
 #include <thread>
 #include <vector>
 #include <mutex>
+#include <chrono>
+#include <ctime> 
 
 #include "cpu.h"
 #include "gpu.h"
@@ -14,9 +16,17 @@ std::mutex g_lock;
 
 void thread_proc(int tnum, char* hostname, int rank) {
     g_lock.lock();
-    double start = MPI_Wtime();
-    std::this_thread::sleep_for(std::chrono::seconds(rand()%10));
-    fprintf(stderr, "Time: %lf s. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime() - start, hostname, rank, getpid(), tnum);
+
+    auto start = std::chrono::system_clock::now();
+    int pauseTime = rand()%4;
+    std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
+    auto end = std::chrono::system_clock::now();
+
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+    fprintf(stderr, "Time: %lf s. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d. finished computation at %jd. elapsed time: %d \n",
+     MPI_Wtime() - start, hostname, rank, getpid(), tnum, pauseTime, (intmax_t)std::ctime(&end_time), elapsed_seconds.count());
     g_lock.unlock();
 }
 
