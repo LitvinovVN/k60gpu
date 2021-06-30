@@ -26,9 +26,21 @@ int main (int argc, char* argv[])
     MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &provided);
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
-    
-    if(rank==0)
+       
+
+    if(rank==0){
         cout << "MPI size is " << size << endl;
+
+        if(provided < MPI_THREAD_MULTIPLE)
+        {
+            printf("The threading support level is lesser than that demanded.\n");
+            MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
+        }
+        else
+        {
+            printf("The threading support level corresponds to that demanded.\n");
+        }
+    }
 
     double t = MPI_Wtime();
     char hostname[50];    
