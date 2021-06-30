@@ -25,8 +25,8 @@ void thread_proc(int tnum, char* hostname, int rank) {
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-    fprintf(stderr, "Time: %lf s. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d. finished computation at %jd. elapsed time: %d \n",
-     MPI_Wtime() - start, hostname, rank, getpid(), tnum, pauseTime, (intmax_t)std::ctime(&end_time), elapsed_seconds.count());
+    fprintf(stderr, "Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d. finished computation at %jd. elapsed time: %d \n",
+     hostname, rank, getpid(), tnum, pauseTime, (intmax_t)std::ctime(&end_time), elapsed_seconds.count());
     g_lock.unlock();
 }
 
