@@ -52,7 +52,8 @@ int main (int argc, char* argv[])
         }
 
         auto start = std::chrono::system_clock::now();
-        // Some computation here
+        // Some computation here - 1 sec pause for test
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         auto end = std::chrono::system_clock::now();
 
         std::chrono::duration<double> elapsed_seconds = end-start;
