@@ -50,6 +50,10 @@ int main (int argc, char* argv[])
         {
             printf("The threading support level corresponds to that demanded.\n");
         }
+
+        time_t epoch = 0;
+        printf("%jd seconds since the epoch began\n", (intmax_t)epoch);
+        printf("%s", asctime(gmtime(&epoch)));
     }
 
     double t = MPI_Wtime();
