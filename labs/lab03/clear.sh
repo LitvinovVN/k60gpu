@@ -9,5 +9,5 @@ mcancel myapp3.3
 
 echo '------ Removing temporary files -------'
 rm -r myapp3.*
-rm *.o myapp
+rm *.o myapp3
 echo '------ Temporary files removed ------'
