@@ -17,16 +17,16 @@ std::mutex g_lock;
 void thread_proc(int tnum, char* hostname, int rank) {
     //g_lock.lock();
 
-    //auto start = std::chrono::system_clock::now();
+    auto start = std::chrono::system_clock::now();
     int pauseTime = 2; //rand()%4;
     std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
-    //auto end = std::chrono::system_clock::now();
+    auto end = std::chrono::system_clock::now();
 
-    //std::chrono::duration<double> elapsed_seconds = end-start;
-    //std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-    //fprintf(stderr, "Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d. finished computation at %jd. elapsed time: %d \n",
-    // hostname, rank, getpid(), tnum, pauseTime, (intmax_t)std::ctime(&end_time), elapsed_seconds.count());
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+   
+    fprintf(stderr, "Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d. finished computation at %jd. elapsed time: %d \n",
+        hostname, rank, getpid(), tnum, pauseTime, (intmax_t)std::ctime(&end_time), elapsed_seconds.count());
     //g_lock.unlock();
 }
 
