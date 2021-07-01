@@ -18,7 +18,7 @@ void thread_proc(int tnum, char* hostname, int rank) {
     g_lock.lock();
 
     auto start = std::chrono::system_clock::now();
-    int pauseTime = rand()%4;
+    int pauseTime = 2; //rand()%4;
     std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
     auto end = std::chrono::system_clock::now();
 
