@@ -67,14 +67,14 @@ int main (int argc, char* argv[])
     char hostname[50];    
     gethostname(hostname, 50);
     pid_t pid = getpid();
-    int nHardwareThreads = std::thread::hardware_concurrency();
+    int nHardwareThreads = 4;// std::thread::hardware_concurrency();
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Hardware threads: %d \n", t, hostname, rank, pid, nHardwareThreads);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     double t1 = MPI_Wtime();
     std::vector<std::thread> threads;
-	for(int i = 0; i < 100 /*nHardwareThreads-1*/; i++) {
+	for(int i = 0; i < nHardwareThreads-1; i++) {
 		std::thread thr(thread_proc, i, hostname, rank);
 		threads.emplace_back(std::move(thr));
 	}

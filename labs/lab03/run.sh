@@ -20,7 +20,7 @@ echo '------- mpirun -np 4 ./myapp --------'
 #mpirun -np 4 ./myapp
 
 echo '------- mpirun -np 1 -ppn 1 -maxtime 2 ./myapp --------'
-mpirun -np 1 -ppn 1 -maxtime 2 ./myapp3
+mpirun -np 1 -ppn 4 -maxtime 2 ./myapp3
 
 echo '------- mpirun -np 2 -ppn 1 -maxtime 2 ./myapp --------'
 #mpirun -np 2 -ppn 1 -maxtime 2 ./myapp
