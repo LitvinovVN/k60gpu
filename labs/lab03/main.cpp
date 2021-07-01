@@ -41,7 +41,7 @@ int main (int argc, char* argv[])
     if(rank==0){
         cout << "MPI size is " << size << endl;
 
-        if(provided < MPI_THREAD_MULTIPLE)
+        if(provided < MPI_THREAD_FUNNELED)// MPI_THREAD_MULTIPLE
         {
             printf("The threading support level is lesser than that demanded.\n");
             MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
