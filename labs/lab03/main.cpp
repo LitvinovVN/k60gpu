@@ -15,9 +15,9 @@ using namespace std;
 std::mutex g_lock;
 
 void thread_proc(int tnum, char* hostname, int rank) {
-    g_lock.lock();
+    //g_lock.lock();
 
-    auto start = std::chrono::system_clock::now();
+    //auto start = std::chrono::system_clock::now();
     int pauseTime = 2; //rand()%4;
     std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
     auto end = std::chrono::system_clock::now();
@@ -74,7 +74,7 @@ int main (int argc, char* argv[])
 
     double t1 = MPI_Wtime();
     std::vector<std::thread> threads;
-	for(int i = 0; i < nHardwareThreads-1; i++) {
+	for(int i = 0; i < 5 /*nHardwareThreads-1*/; i++) {
 		std::thread thr(thread_proc, i, hostname, rank);
 		threads.emplace_back(std::move(thr));
 	}
