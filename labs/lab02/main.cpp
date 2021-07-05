@@ -28,9 +28,7 @@ int main (int argc, char* argv[])
 {    
     int rank, size, provided;    
     mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
-   
-    testFunction();
-
+    
     std::vector<std::thread> threads;
 	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
 		std::thread thr(thread_proc, i, rank);
