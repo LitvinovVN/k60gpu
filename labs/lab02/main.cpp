@@ -26,9 +26,9 @@ void mpi_init(int argc, char* argv[]/*, int provided, int rank, int size*/){
     printf("&argc: %p\n", (void*)&argc);
 
     int i;    
-    for(i=0;i<argc-1;i++)
+    for(i=0;i<argc;i++)
     {
-        printf("%s",argv[i]);
+        printf("argv[%d]: %s\n", i, argv[i]);
     }
 }
 
