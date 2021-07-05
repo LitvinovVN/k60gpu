@@ -23,12 +23,25 @@ void thread_proc(int tnum, char* hostname, int rank) {
 int main (int argc, char* argv[])
 {
     int rank, size;
-    MPI_Init (&argc, &argv);
+    MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);// MPI_THREAD_MULTIPLE
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
     
-    if(rank==0)
+    if(rank==0){
         cout << "MPI size is " << size << endl;
+
+        if(provided < MPI_THREAD_FUNNELED)// MPI_THREAD_MULTIPLE
+        {
+            printf("The threading support level is lesser than that demanded.\n");
+            MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
+        }
+        else
+        {
+            printf("The threading support level MPI_THREAD_FUNNELED corresponds to that demanded.\n");
+        }
+
+        printf("hardware_concurrency(): %d\n", std::thread::hardware_concurrency());
+    }
 
     double t = MPI_Wtime();
     char hostname[50];    
