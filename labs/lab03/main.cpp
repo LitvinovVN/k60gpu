@@ -15,10 +15,11 @@ using namespace std;
 std::mutex g_lock;
 
 void thread_proc(int tnum, char* hostname, int rank) {
+    fprintf(stderr, "Thread %d started... \n", tnum );
     //g_lock.lock();
 
     auto start = std::chrono::system_clock::now();
-    int pauseTime = 2; //rand()%4;
+    int pauseTime = tnum; //rand()%4;
     std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
     auto end = std::chrono::system_clock::now();
 
