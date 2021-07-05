@@ -4,6 +4,8 @@
 #include <thread>
 #include <vector>
 
+#include "utils.h"
+
 using namespace std;
 
 void thread_proc(int tnum, int rank) {
@@ -78,6 +80,7 @@ int main (int argc, char* argv[])
     printf("rank: %d\n", rank);
     printf("provided: %d\n", provided);
 
+    testFunction();
 
     std::vector<std::thread> threads;
 	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
