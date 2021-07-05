@@ -25,7 +25,11 @@ void mpi_init(int argc, char* argv[]/*, int provided, int rank, int size*/){
     printf("argc: %d\n", argc);
     printf("&argc: %p\n", (void*)&argc);
 
-    printf("argv: %-20s\n", argv);
+    int i;    
+    for(i=0;i<argc-1;i++)
+    {
+        printf("%s",argv[i]);
+    }
 }
 
 
