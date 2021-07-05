@@ -22,6 +22,11 @@ void thread_proc(int tnum, char* hostname, int rank) {
 
 
 void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &rank, int &size){
+    MPI_Comm_rank (MPI_COMM_WORLD, &rank);
+    MPI_Comm_size (MPI_COMM_WORLD, &size);
+
+    if(rank!=0) return;
+    
     printf("argc: %d\n", argc);
     printf("&argc: %p\n", (void*)&argc);
     
@@ -33,10 +38,7 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &r
     printf("mpi_thread_type: %d\n", mpi_thread_type);
 
     printf("provided: %d\n",   provided);
-    printf("&provided: %p\n", &provided);    
-
-    MPI_Comm_rank (MPI_COMM_WORLD, &rank);
-    MPI_Comm_size (MPI_COMM_WORLD, &size);
+    printf("&provided: %p\n", &provided);   
 
     printf("rank: %d\n",   rank);
     printf("&rank: %p\n", &rank);
