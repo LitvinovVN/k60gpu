@@ -86,6 +86,31 @@ int main (int argc, char* argv[])
     printf("That took %f seconds\n",t2-t1);
 
 
+    //---------------------
+    std::thread t1([]{
+        fprintf(stderr, "Thread t1 started... \n" );
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        fprintf(stderr, "Thread t1 woke up after 2 \n" ); });
+
+    std::thread t2([]{
+        fprintf(stderr, "Thread t2 started... \n" );
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        fprintf(stderr, "Thread t2 woke up after 1 \n" ); });
+
+    std::thread t3([]{
+        fprintf(stderr, "Thread t3 started... \n" );
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+        fprintf(stderr, "Thread t3 woke up after 3 \n" ); });
+    
+    t1.join();
+    t2.join();
+    t3.join();
+
+    double t3 = MPI_Wtime();
+    printf("Working of t1, t2, t3: %f seconds. Expected 3 seconds\n",t3-t2);
+    //---------------------
+
+
     MPI_Barrier(MPI_COMM_WORLD);
 
     int x = rank;
