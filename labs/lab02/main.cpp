@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void thread_proc(int tnum, char* hostname, int rank) {
+void thread_proc(int tnum, int rank) {
     fprintf(stderr, "Thread %d started... \n", tnum );
 
     auto start = std::chrono::system_clock::now();
@@ -17,7 +17,7 @@ void thread_proc(int tnum, char* hostname, int rank) {
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum, pauseTime);
+    fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);
 }
 
 
@@ -81,7 +81,7 @@ int main (int argc, char* argv[])
 
     std::vector<std::thread> threads;
 	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
-		std::thread thr(thread_proc, i, hostname, rank);
+		std::thread thr(thread_proc, i, rank);
 		threads.emplace_back(std::move(thr));
 	}
 	
