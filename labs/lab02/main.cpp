@@ -46,6 +46,18 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &r
 
     printf("size: %d\n",   size);
     printf("&size: %p\n", &size);
+    
+    if(provided < MPI_THREAD_FUNNELED)// MPI_THREAD_MULTIPLE
+    {
+        printf("The threading support level is lesser than that demanded.\n");
+        MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
+    }
+    else
+    {
+        printf("The threading support level: MPI_THREAD_FUNNELED\n");
+    }
+
+    printf("hardware_concurrency(): %d\n", std::thread::hardware_concurrency());
 }
 
 
@@ -56,23 +68,7 @@ int main (int argc, char* argv[])
     //MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);// MPI_THREAD_MULTIPLE
     
     
-    mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);
-
-    if(rank==0){
-        cout << "MPI size is " << size << endl;
-
-        if(provided < MPI_THREAD_FUNNELED)// MPI_THREAD_MULTIPLE
-        {
-            printf("The threading support level is lesser than that demanded.\n");
-            MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
-        }
-        else
-        {
-            printf("The threading support level: MPI_THREAD_FUNNELED\n");
-        }
-
-        printf("hardware_concurrency(): %d\n", std::thread::hardware_concurrency());
-    }    
+    mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
 
     
     
