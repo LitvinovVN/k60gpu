@@ -1,4 +1,5 @@
 #include <iostream>
+#include <mpi.h>
 #include "utils.h"
 
 void testFunction(){
