@@ -18,6 +18,7 @@ void thread_proc(int tnum, int rank) {
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
     fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);
+    std::cerr << "Printing to std::cerr";
 }
 
 
@@ -88,7 +89,7 @@ int main (int argc, char* argv[])
 	for(auto& thr : threads) {
 		thr.join();
 	}
-
+    
     MPI_Finalize();
     return 0;
 }
