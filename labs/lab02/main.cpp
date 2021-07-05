@@ -21,16 +21,18 @@ void thread_proc(int tnum, char* hostname, int rank) {
 }
 
 
-void mpi_init(int argc/*, char* argv[], int provided, int rank, int size*/){
+void mpi_init(int argc, char* argv[]/*, int provided, int rank, int size*/){
     printf("argc: %d\n", argc);
     printf("&argc: %p\n", (void*)&argc);
+
+    printf("argv: %s\n", argv);
 }
 
 
 int main (int argc, char* argv[])
 {    
     int rank, size, provided;
-    mpi_init(argc/*, argv, MPI_THREAD_FUNNELED, &provided, &rank, &size*/);
+    mpi_init(argc, argv/*, MPI_THREAD_FUNNELED, &provided, &rank, &size*/);
 
 
     MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);// MPI_THREAD_MULTIPLE
