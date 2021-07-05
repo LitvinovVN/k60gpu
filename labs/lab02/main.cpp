@@ -21,7 +21,7 @@ void thread_proc(int tnum, char* hostname, int rank) {
 }
 
 
-void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided/*, int rank, int size*/){
+void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &rank, int &size){
     printf("argc: %d\n", argc);
     printf("&argc: %p\n", (void*)&argc);
     
@@ -33,7 +33,13 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided/*, int 
     printf("mpi_thread_type: %d\n", mpi_thread_type);
 
     printf("provided: %d\n",   provided);
-    printf("&provided: %p\n", &provided);
+    printf("&provided: %p\n", &provided);    
+
+    printf("rank: %d\n",   rank);
+    printf("&rank: %p\n", &rank);
+
+    printf("size: %d\n",   size);
+    printf("&size: %p\n", &size);
 }
 
 
@@ -45,7 +51,7 @@ int main (int argc, char* argv[])
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
     
-    mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided/*, &rank, &size*/);
+    mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);
 
     if(rank==0){
         cout << "MPI size is " << size << endl;
