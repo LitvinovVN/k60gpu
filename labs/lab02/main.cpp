@@ -7,7 +7,17 @@
 using namespace std;
 
 void thread_proc(int tnum, char* hostname, int rank) {
-    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum);
+    fprintf(stderr, "Thread %d started... \n", tnum );
+
+    auto start = std::chrono::system_clock::now();
+    int pauseTime = tnum;
+    std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
+    auto end = std::chrono::system_clock::now();
+
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+    fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum, pauseTime);
 }
 
 int main (int argc, char* argv[])
