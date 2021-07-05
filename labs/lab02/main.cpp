@@ -23,7 +23,7 @@ void thread_proc(int tnum, char* hostname, int rank) {
 
 void mpi_init(int argc/*, char* argv[], int provided, int rank, int size*/){
     printf("argc: %d\n", argc);
-    printf("&argc: %d\n", &argc);
+    printf("&argc: %p\n", (void*)argc);
 }
 
 
