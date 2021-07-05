@@ -67,7 +67,7 @@ int main (int argc, char* argv[])
     char hostname[50];    
     gethostname(hostname, 50);
     pid_t pid = getpid();
-    int nHardwareThreads = 8;// std::thread::hardware_concurrency();
+    int nHardwareThreads = std::thread::hardware_concurrency();
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Hardware threads: %d \n", t, hostname, rank, pid, nHardwareThreads);
 
     MPI_Barrier(MPI_COMM_WORLD);
