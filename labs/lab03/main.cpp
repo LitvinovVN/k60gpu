@@ -75,7 +75,7 @@ int main (int argc, char* argv[])
 
     double t1 = MPI_Wtime();
     std::vector<std::thread> threads;
-	for(int i = 0; i < nHardwareThreads-1; i++) {
+	for(int i = 0; i < 10 + nHardwareThreads-1; i++) {
 		std::thread thr(thread_proc, i, hostname, rank);
 		threads.emplace_back(std::move(thr));
 	}
