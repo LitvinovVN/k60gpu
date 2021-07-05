@@ -35,6 +35,9 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &r
     printf("provided: %d\n",   provided);
     printf("&provided: %p\n", &provided);    
 
+    MPI_Comm_rank (MPI_COMM_WORLD, &rank);
+    MPI_Comm_size (MPI_COMM_WORLD, &size);
+
     printf("rank: %d\n",   rank);
     printf("&rank: %p\n", &rank);
 
@@ -48,8 +51,7 @@ int main (int argc, char* argv[])
     int rank, size, provided;
     
     MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);// MPI_THREAD_MULTIPLE
-    MPI_Comm_rank (MPI_COMM_WORLD, &rank);
-    MPI_Comm_size (MPI_COMM_WORLD, &size);
+    
     
     mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);
 
