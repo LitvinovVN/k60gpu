@@ -33,7 +33,7 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided/*, int 
     printf("mpi_thread_type: %d\n", mpi_thread_type);
 
     printf("provided: %d\n",   provided);
-    printf("&provided: %d\n", &provided);
+    printf("&provided: %p\n", &provided);
 }
 
 
