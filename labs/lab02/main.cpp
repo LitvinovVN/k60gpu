@@ -17,8 +17,7 @@ void thread_proc(int tnum, int rank) {
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-    fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);
-    std::cerr << "Printing to std::cerr";
+    fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
 }
 
 
