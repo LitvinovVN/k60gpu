@@ -22,7 +22,7 @@ void thread_proc(int tnum, int rank) {
     fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
 }
 
-void testThreads(){
+void testThreads(int rank){
     std::vector<std::thread> threads;
 	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
 		std::thread thr(thread_proc, i, rank);
@@ -39,7 +39,7 @@ int main (int argc, char* argv[])
     int rank, size, provided;    
     mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
     
-    testThreads();
+    testThreads(rank);
     
     MPI_Finalize();
     return 0;
