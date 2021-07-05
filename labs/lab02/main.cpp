@@ -9,7 +9,7 @@
 using namespace std;
 
 void thread_proc(int tnum, int rank) {
-    fprintf(stderr, "Thread %d started... \n", tnum );
+    fprintf(stderr, "Thread %d started at node %d... \n", tnum, rank);
 
     auto start = std::chrono::system_clock::now();
     int pauseTime = tnum;
