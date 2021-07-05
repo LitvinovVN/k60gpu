@@ -74,12 +74,13 @@ int main (int argc, char* argv[])
     int rank, size, provided;    
     mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
 
-      
-    
+    printf("size: %d\n",   size);  
+    printf("rank: %d\n",   rank);
+    printf("provided: %d\n",   provided);
 
 
     std::vector<std::thread> threads;
-	for(int i = 0; i < nHardwareThreads-1; i++) {
+	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
 		std::thread thr(thread_proc, i, hostname, rank);
 		threads.emplace_back(std::move(thr));
 	}
