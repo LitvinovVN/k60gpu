@@ -20,9 +20,8 @@ void thread_proc(int tnum, char* hostname, int rank) {
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), hostname, rank, getpid(), tnum, pauseTime);
 }
 
-int main (int argc, char* argv[])
-{
-    int rank, size, provided;
+
+void mpi_init(int argc, char* argv[], int provided, int rank, int size){
     MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);// MPI_THREAD_MULTIPLE
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
@@ -37,12 +36,21 @@ int main (int argc, char* argv[])
         }
         else
         {
-            printf("The threading support level MPI_THREAD_FUNNELED corresponds to that demanded.\n");
+            printf("The threading support level: MPI_THREAD_FUNNELED\n");
         }
 
         printf("hardware_concurrency(): %d\n", std::thread::hardware_concurrency());
-    }
+    }    
+}
 
+
+int main (int argc, char* argv[])
+{    
+    int rank, size, provided;
+    mpi_init(&argc, &argv, MPI_THREAD_FUNNELED, &provided, &rank, &size);
+
+    
+    
     double t = MPI_Wtime();
     char hostname[50];    
     gethostname(hostname, 50);
