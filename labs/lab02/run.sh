@@ -6,7 +6,7 @@ echo '------- Compiling main.c into main.o: mpicxx -O3 -c main.cpp ------'
 mpicxx -O3 -std=c++11 -c main.cpp
 mpicxx -O3 -std=c++11 -c utils.cpp
 echo '-------- mpicxx -o myapp main.o -----'
-mpicxx -o myapp2 main.o
+mpicxx -o myapp2 main.o utils.o
 echo '-------------'
 
 #echo '------- Starting myapp in 1 node with 4 cpu per node with maxtime by default (5 minutes) ------'
