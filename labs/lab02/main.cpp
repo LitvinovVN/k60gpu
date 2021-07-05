@@ -22,7 +22,7 @@ void thread_proc(int tnum, int rank) {
 
 
 void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &rank, int &size){
-    MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);// MPI_THREAD_MULTIPLE
+    MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
 
@@ -50,7 +50,7 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &r
         printf("size: %d\n",   size);
         printf("&size: %p\n", &size);
 
-        if(provided < MPI_THREAD_FUNNELED)// MPI_THREAD_MULTIPLE
+        if(provided < MPI_THREAD_FUNNELED)
         {
             printf("The threading support level is lesser than that demanded.\n");
             MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
@@ -74,9 +74,9 @@ int main (int argc, char* argv[])
     int rank, size, provided;    
     mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
 
-    printf("size: %d\n",   size);  
-    printf("rank: %d\n",   rank);
-    printf("provided: %d\n",   provided);
+    printf("size: %d\n", size);  
+    printf("rank: %d\n", rank);
+    printf("provided: %d\n", provided);
 
 
     std::vector<std::thread> threads;
