@@ -1,44 +1,16 @@
 #include <mpi.h>
 #include <iostream> 
 #include <unistd.h>
-#include <thread>
-#include <vector>
+//#include <thread>
+//#include <vector>
 #include <chrono> // chrono::system_clock
 #include <ctime>   // localtime
-#include <iomanip> // put_time
+//#include <iomanip> // put_time
 
 #include "utils.h"
-//#include "cpuThreads.h"
+#include "cpuThreads.h"
 
 using namespace std;
-
-
-void thread_proc(int tnum, int rank) {
-    fprintf(stderr, "Thread %d started at node %d... \n", tnum, rank);
-
-    auto start = std::chrono::system_clock::now();
-    int pauseTime = tnum;
-    std::this_thread::sleep_for(std::chrono::seconds(pauseTime));
-    auto end = std::chrono::system_clock::now();
-
-    std::chrono::duration<double> elapsed_seconds = end-start;
-    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-    fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
-}
-
-
-void testThreads(int rank){    
-    std::vector<std::thread> threads;
-	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
-		std::thread thr(thread_proc, i, rank);
-		threads.emplace_back(std::move(thr));
-	}
-	
-	for(auto& thr : threads) {
-		thr.join();
-	}    
-}
 
 int main (int argc, char* argv[])
 {    
