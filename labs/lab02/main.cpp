@@ -1,11 +1,6 @@
 #include <mpi.h>
 #include <iostream> 
-//#include <unistd.h>
-//#include <thread>
-//#include <vector>
-//#include <chrono> // chrono::system_clock
-#include <ctime>   // localtime
-//#include <iomanip> // put_time
+//#include <ctime>   // localtime
 
 #include "utils.h"
 #include "cpuThreads.h"
