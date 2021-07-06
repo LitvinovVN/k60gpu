@@ -1,6 +1,6 @@
 #include <mpi.h>
 #include <iostream> 
-//#include <unistd.h>
+#include <unistd.h> // getpid
 #include <thread>
 #include <vector>
 #include <chrono> // chrono::system_clock
