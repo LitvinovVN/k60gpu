@@ -60,10 +60,10 @@ int main (int argc, char* argv[])
     testThreads(rank);
 
 
-    const size_t n = 1'000'000;
-    std::chrono::nanoseconds elapsed;
+    //const size_t n = 1'000'000;
+    //std::chrono::nanoseconds elapsed;
     {
-        Stopwatch stopwatch{elapsed};
+        Stopwatch stopwatch{/*elapsed*/};
         volatile double result{1.23e45};
         for(double i=1; i<n; i++)
         {
