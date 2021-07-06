@@ -12,7 +12,7 @@
 
 using namespace std;
 
-extern "C"
+
 void thread_proc(int tnum, int rank) {
     fprintf(stderr, "Thread %d started at node %d... \n", tnum, rank);
 
@@ -27,7 +27,7 @@ void thread_proc(int tnum, int rank) {
     fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
 }
 
-extern "C"
+
 void testThreads(int rank){    
     std::vector<std::thread> threads;
 	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
