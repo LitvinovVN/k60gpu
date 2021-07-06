@@ -42,5 +42,5 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &r
         {
             printf("The threading support level: MPI_THREAD_FUNNELED\n");
         }
-    }    
+    }
 }
