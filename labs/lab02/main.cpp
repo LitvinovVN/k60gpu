@@ -63,6 +63,7 @@ int main (int argc, char* argv[])
     //const size_t n = 1'000'000;
     //std::chrono::nanoseconds elapsed;
     {
+        printf("Stopwatch!\n");
         Stopwatch stopwatch{/*elapsed*/};
         volatile double result{1.23e45};
         for(double i=1; i<n; i++)
