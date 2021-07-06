@@ -1,6 +1,5 @@
 #include <mpi.h>
 #include <iostream> 
-//#include <ctime>   // localtime
 
 #include "utils.h"
 #include "cpuThreads.h"
