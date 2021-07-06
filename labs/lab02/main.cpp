@@ -60,7 +60,7 @@ int main (int argc, char* argv[])
     testThreads(rank);
 
 
-    /*const size_t n = 1'000'000;
+    const size_t n = 1'000'000;
     std::chrono::nanoseconds elapsed;
     {
         Stopwatch stopwatch{elapsed};
@@ -70,8 +70,8 @@ int main (int argc, char* argv[])
             result /= i;
         }
     }
-    auto time_per_division = elapsed.count() / double{n};
-    printf("Took %g ns per division.\n", time_per_division);*/
+    //auto time_per_division = elapsed.count() / double{n};
+    //printf("Took %g ns per division.\n", time_per_division);
     
     MPI_Finalize();
     return 0;
