@@ -60,7 +60,7 @@ int main (int argc, char* argv[])
     testThreads(rank);
 
 
-    const size_t n = 1'000'000;
+    const size_t n = 1000000;
     //std::chrono::nanoseconds elapsed;
     {
         printf("Stopwatch!\n");
