@@ -11,19 +11,19 @@ using namespace std;
 
 struct Stopwatch {
     Stopwatch(std::chrono::nanoseconds& result)
-     : /*_result{result},*/ start{ std::chrono::high_resolution_clock::now() }
+     : _result{result}, _start{ std::chrono::high_resolution_clock::now() }
     {
-        _result = result;
+        //_result = result;
         //start = std::chrono::high_resolution_clock::now();
     }
 
     ~Stopwatch() {
-         _result = std::chrono::high_resolution_clock::now() - start;
+         _result = std::chrono::high_resolution_clock::now() - _start;
     }
 
 private:
     std::chrono::nanoseconds& _result;
-    const std::chrono::time_point<std::chrono::high_resolution_clock> start;
+    const std::chrono::time_point<std::chrono::high_resolution_clock> _start;
 };
 
 
