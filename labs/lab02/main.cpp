@@ -8,6 +8,7 @@
 #include <iomanip> // put_time
 
 #include "utils.h"
+#include "cpuThreads.h"
 
 using namespace std;
 
