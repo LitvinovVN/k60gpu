@@ -1,3 +1,11 @@
+#include <iostream> 
+#include <unistd.h>
+#include <thread>
+#include <vector>
+#include <chrono> // chrono::system_clock
+#include <ctime>   // localtime
+#include <iomanip> // put_time
+
 #include "cpuThreads.h"
 
 extern "C"
