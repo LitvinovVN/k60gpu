@@ -42,7 +42,7 @@ int main (int argc, char* argv[])
 {    
     int rank, size, provided;    
     mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
-    MPI_Barrier( MPI_COMM_WORLD )
+    MPI_Barrier( MPI_COMM_WORLD );
 
     double t1 = MPI_Wtime();
     testThreads(rank); 
