@@ -22,7 +22,7 @@ struct Stopwatch {
     }
 
 private:
-    std::chrono::nanoseconds& _result;
+    std::chrono::nanoseconds _result;
     const std::chrono::time_point<std::chrono::high_resolution_clock> _start;
 };
 
