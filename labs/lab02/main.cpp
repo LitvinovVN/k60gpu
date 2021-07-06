@@ -9,6 +9,13 @@
 
 using namespace std;
 
+void printTime(std::string timePointDescr){
+    auto now = std::chrono::system_clock::now();
+    time_t tt = std::chrono::system_clock::to_time_t(now);  
+
+    std::cout << std::put_time(std::localtime(&tt), "%X") << ": " << timePointDescr << std::endl;
+    std::cerr << "errors";
+}
 
 void thread_proc(int tnum, int rank) {
     fprintf(stderr, "Thread %d started at node %d... \n", tnum, rank);
@@ -25,6 +32,7 @@ void thread_proc(int tnum, int rank) {
 }
 
 void testThreads(int rank){
+    printTime("testThreads started.\n");
     std::vector<std::thread> threads;
 	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
 		std::thread thr(thread_proc, i, rank);
@@ -34,6 +42,7 @@ void testThreads(int rank){
 	for(auto& thr : threads) {
 		thr.join();
 	}
+    printTime("testThreads ended.\n");
 }
 
 int main (int argc, char* argv[])
