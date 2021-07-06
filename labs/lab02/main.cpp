@@ -10,19 +10,18 @@
 using namespace std;
 
 struct Stopwatch {
-    Stopwatch(/*std::chrono::nanoseconds& result*/)
-     : /*_result{result},*/ _start{ std::chrono::high_resolution_clock::now() }
-    {
-        //_result = result;
-        //start = std::chrono::high_resolution_clock::now();
-    }
+    Stopwatch()
+     : _start{ std::chrono::high_resolution_clock::now() }
+    { }
 
     ~Stopwatch() {
-         _result = std::chrono::high_resolution_clock::now() - _start;
+        _elapsed = std::chrono::high_resolution_clock::now() - _start;
+        auto time = _elapsed.count();
+        printf("Took %g ns.\n", time);
     }
 
 private:
-    std::chrono::nanoseconds _result;
+    std::chrono::nanoseconds _elapsed;
     const std::chrono::time_point<std::chrono::high_resolution_clock> _start;
 };
 
