@@ -1,3 +1,0 @@
-C:/!MyProjects/k60gpu/ckp_work/c++/cmake/_build/CMakeFiles/test_cmake.dir
-C:/!MyProjects/k60gpu/ckp_work/c++/cmake/_build/CMakeFiles/ALL_BUILD.dir
-C:/!MyProjects/k60gpu/ckp_work/c++/cmake/_build/CMakeFiles/ZERO_CHECK.dir
