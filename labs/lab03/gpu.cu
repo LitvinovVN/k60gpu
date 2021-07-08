@@ -33,14 +33,16 @@ void printGpuParameters(std::string prefixDescr) {
 		ss << "Warp size                       : " << devProp.warpSize << std::endl;
 		ss << "Max threads per block           : " << devProp.maxThreadsPerBlock << std::endl;
 		ss << "Total constant memory           : " << devProp.totalConstMem << " bytes" << std::endl;
-		ss << "Clock rate                      : " << devProp.clockRate << " Hz" << std::endl;
-		ss << "Texture Alignment               : " << devProp.textureAlignment << std::endl;
-		ss << "Device Overlap                  : " << devProp.deviceOverlap << std::endl;
-		ss << "Multiprocessor Count            : " << devProp.multiProcessorCount << std::endl;
-		ss << "Max Threads Dim                 : " << devProp.maxThreadsDim[0] << " " << devProp.maxThreadsDim[1] << " " << devProp.maxThreadsDim[2] << std::endl;
-		ss << "Max Threads per block           : " << devProp.maxThreadsPerBlock << std::endl;
-		ss << "Max Threads per multiprocessor  : " << devProp.maxThreadsPerMultiProcessor << std::endl;
-		ss << "Max Grid Num                    : " << devProp.maxGridSize[0] << " " << devProp.maxGridSize[1] << " " << devProp.maxGridSize[2] << std::endl;
+		ss << "Clock rate                      : " << devProp.clockRate << " kHz" << std::endl;
+		ss << "Global memory bus width         : " << devProp.memoryBusWidth << " bits" << std::endl;
+		ss << "Peak memory clock frequency     : " << devProp.memoryClockRate << " kHz" << std::endl;
+		ss << "Texture alignment               : " << devProp.textureAlignment << std::endl;
+		ss << "Device overlap                  : " << devProp.deviceOverlap << std::endl;
+		ss << "Multiprocessor count            : " << devProp.multiProcessorCount << std::endl;
+		ss << "Max threads dim                 : " << devProp.maxThreadsDim[0] << " " << devProp.maxThreadsDim[1] << " " << devProp.maxThreadsDim[2] << std::endl;
+		ss << "Max threads per block           : " << devProp.maxThreadsPerBlock << std::endl;
+		ss << "Max threads per multiprocessor  : " << devProp.maxThreadsPerMultiProcessor << std::endl;
+		ss << "Max grid num                    : " << devProp.maxGridSize[0] << " " << devProp.maxGridSize[1] << " " << devProp.maxGridSize[2] << std::endl;
 	}
 
     std::cout << ss.str();
