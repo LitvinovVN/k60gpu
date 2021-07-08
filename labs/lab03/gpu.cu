@@ -22,7 +22,7 @@ void printGpuParameters(std::string prefixDescr) {
 	for(int device = 0; device < deviceCount; device++){
 		cudaGetDeviceProperties(&devProp, device);
 
-		ss << "Device " << device << std::endl;
+		ss << "  --- Device " << device << " ---" << std::endl;
 		ss << "Compute capability              : " << devProp.major << "." << devProp.minor << std::endl;
 		ss << "Name                            : " << devProp.name << std::endl;
 		ss << "Total Global Memory             : " << devProp.totalGlobalMem << " bytes ("<< devProp.totalGlobalMem  / 1024.0 / 1024.0 / 1024.0 << " Gb)" << std::endl;
