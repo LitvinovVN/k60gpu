@@ -26,9 +26,12 @@ void printGpuParameters(std::string prefixDescr) {
 		ss << "Compute capability     : " << devProp.major << "." << devProp.minor << std::endl;
 		ss << "Name                   : " << devProp.name << std::endl;
 		ss << "Total Global Memory    : " << devProp.totalGlobalMem << " bytes ("<< devProp.totalGlobalMem  / 1024.0 / 1024.0 / 1024.0 << " Gb)" << std::endl;
-		ss << "Shared memory per block: " << devProp.sharedMemPerBlock << std::endl;
+		ss << "Shared memory per block: " << devProp.sharedMemPerBlock << " bytes" << std::endl;
 		ss << "Registers per block    : " << devProp.regsPerBlock << std::endl;
 		ss << "Warp size              : " << devProp.warpSize << std::endl;
+		ss << "Max threads per block  : " << devProp.maxThreadsPerBlock << std::endl;
+		ss << "Total constant memory  : " << devProp.totalConstMem << " bytes" << std::endl;
+		ss << "Clock rate             : " << devProp.clockRate << " Hz" << std::endl;
 	}
 
     std::cout << ss.str();
