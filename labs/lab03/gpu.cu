@@ -4,6 +4,12 @@
 
 #include "gpu.h"
 
+
+extern "C" void printGpuParameters() {
+	std::cerr << "printGpuParameters()" << std::endl;
+}
+
+
 __global__ void mult(int x, int y, int *res) {	
 	*res = x * y;	
 }
