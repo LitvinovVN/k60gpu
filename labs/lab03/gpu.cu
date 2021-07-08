@@ -19,6 +19,14 @@ void printGpuParameters(std::string prefixDescr) {
     ss << prefixDescr << std::endl;
 	ss << "Finded " << deviceCount << " cuda compatible devices" << std::endl;
 
+	for(int device = 0; device < deviceCount; device++){
+		cudaGetDeviceProperties(&devProp, device);
+
+		ss << "Device " << device << std::endl;
+		ss << "Compute capability: " << devProp.major << "." << devProp.minor << std::endl;
+		ss << "Name   : " << devProp.name << std::endl;
+	}
+
     std::cout << ss.str();
 }
 
