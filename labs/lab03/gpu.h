@@ -1,0 +1,1 @@
+extern "C" int gpu(int x, int y);

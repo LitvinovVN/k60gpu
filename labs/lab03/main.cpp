@@ -3,6 +3,7 @@
 
 #include "utils.h"
 #include "cpuThreads.h"
+#include "gpu.h"
 
 using namespace std;
 
@@ -17,6 +18,9 @@ int main (int argc, char* argv[])
     double t2 = MPI_Wtime();  
     double t = t2-t1;
     printf("Rank %d: Time of testThreads: %lf sec\n",rank, t);
+
+    int res_gpu = gpu(5, 15);
+    std::cerr<<"res_gpu = "<<res_gpu<<" (rank = "<<rank<<")"<<std::endl;
 
     MPI_Finalize();
     return 0;
