@@ -1,6 +1,7 @@
 #include <cuda.h>
 #include <iostream>
 #include <stdio.h>
+#include <sstream> // std::ostringstream
 
 #include "gpu.h"
 
@@ -12,7 +13,13 @@ void printGpuParameters(std::string prefixDescr) {
 
 	cudaGetDeviceCount(&deviceCount);
 
-	std::cerr << prefixDescr << " printGpuParameters(): " << "deviceCount = " << deviceCount << std::endl;
+	//std::cerr << prefixDescr << " printGpuParameters(): " << "deviceCount = " << deviceCount << std::endl;
+
+	std::ostringstream ss;
+    ss << prefixDescr << std::endl;
+	ss << "Finded " << deviceCount << " cuda compatible devices" << std::endl;
+
+    std::cout << ss.str();
 }
 
 
