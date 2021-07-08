@@ -5,7 +5,8 @@
 #include "gpu.h"
 
 
-extern "C" void printGpuParameters() {
+extern "C"
+void printGpuParameters() {
 	std::cerr << "printGpuParameters()" << std::endl;
 }
 
