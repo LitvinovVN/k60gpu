@@ -6,8 +6,13 @@
 
 
 extern "C"
-void printGpuParameters() {
-	std::cerr << "printGpuParameters()" << std::endl;
+void printGpuParameters() {	
+	int deviceCount;
+	cudaDeviceProp devProp;
+
+	cudaGetDeviceCount(&deviceCount);
+
+	std::cerr << "printGpuParameters(): " << "deviceCount = " << deviceCount << std::endl;
 }
 
 
