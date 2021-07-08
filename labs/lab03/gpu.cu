@@ -17,7 +17,7 @@ void printGpuParameters(std::string prefixDescr) {
 	std::ostringstream ss;
 	ss << "------- Printing CUDA-compatible device properties -------" << std::endl;
     ss << prefixDescr << std::endl;
-	ss << "Finded " << deviceCount << " cuda compatible devices" << std::endl;
+	ss << "Found " << deviceCount << " cuda compatible devices" << std::endl;
 
 	for(int device = 0; device < deviceCount; device++){
 		cudaGetDeviceProperties(&devProp, device);
@@ -34,7 +34,7 @@ void printGpuParameters(std::string prefixDescr) {
 		ss << "Clock rate             : " << devProp.clockRate << " Hz" << std::endl;
 		ss << "Texture Alignment      : " << devProp.textureAlignment << std::endl;
 		ss << "Device Overlap         : " << devProp.deviceOverlap << std::endl;
-		ss << "Multiprocessor Count   : " << devProp.multiProcessorCount << " Hz" << std::endl;
+		ss << "Multiprocessor Count   : " << devProp.multiProcessorCount << std::endl;
 		ss << "Max Threads Dim        : " << devProp.maxThreadsDim[0] << " " << devProp.maxThreadsDim[1] << " " << devProp.maxThreadsDim[2] << std::endl;
 		ss << "Max Grid Num           : " << devProp.maxGridSize[0] << " " << devProp.maxGridSize[1] << " " << devProp.maxGridSize[2] << std::endl;
 	}
