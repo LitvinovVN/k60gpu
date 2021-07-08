@@ -7,7 +7,7 @@ mpicxx -O3 -std=c++11 -c main.cpp
 mpicxx -O3 -std=c++11 -c utils.cpp
 mpicxx -O3 -std=c++11 -c cpuThreads.cpp
 echo '------- Compiling gpu.cu into gpu.o ------'
-nvcc --compiler-options -O3 -arch sm_70 --ptxas-options=-v -c gpu.cu
+nvcc -arch sm_70 --ptxas-options=-v -c gpu.cu
 echo '-------- mpicxx -o myapp3 main.o utils.o cpuThreads.o-----'
 mpicxx -L/usr/local/cuda/lib64 -lcudart -lm -o myapp3 main.o utils.o cpuThreads.o gpu.o
 echo '-------------'
