@@ -38,6 +38,8 @@ void printGpuParameters(std::string prefixDescr) {
 		ss << "Device Overlap                  : " << devProp.deviceOverlap << std::endl;
 		ss << "Multiprocessor Count            : " << devProp.multiProcessorCount << std::endl;
 		ss << "Max Threads Dim                 : " << devProp.maxThreadsDim[0] << " " << devProp.maxThreadsDim[1] << " " << devProp.maxThreadsDim[2] << std::endl;
+		ss << "Max Threads per block           : " << devProp.maxThreadsPerBlock[0] << " " << devProp.maxThreadsPerBlock[1] << " " << devProp.maxThreadsPerBlock[2] << std::endl;
+		ss << "Max Threads per multiprocessor  : " << devProp.maxThreadsPerMultiprocessor[0] << " " << devProp.maxThreadsPerMultiprocessor[1] << " " << devProp.maxThreadsPerMultiprocessor[2] << std::endl;
 		ss << "Max Grid Num                    : " << devProp.maxGridSize[0] << " " << devProp.maxGridSize[1] << " " << devProp.maxGridSize[2] << std::endl;
 	}
 
