@@ -13,9 +13,9 @@ void printGpuParameters(std::string prefixDescr) {
 
 	cudaGetDeviceCount(&deviceCount);
 
-	//std::cerr << prefixDescr << " printGpuParameters(): " << "deviceCount = " << deviceCount << std::endl;
-
+	
 	std::ostringstream ss;
+	ss << "------- Printing CUDA-compatible device properties -------" << std::endl;
     ss << prefixDescr << std::endl;
 	ss << "Finded " << deviceCount << " cuda compatible devices" << std::endl;
 

@@ -13,7 +13,7 @@ void thread_proc(int tnum, int rank) {
     fprintf(stderr, "Thread %d started at node %d... \n", tnum, rank);
 
     auto start = std::chrono::system_clock::now();
-    int pauseTime = tnum * 100;
+    int pauseTime = tnum * 10;
     std::this_thread::sleep_for(std::chrono::milliseconds(pauseTime));
     auto end = std::chrono::system_clock::now();
 
