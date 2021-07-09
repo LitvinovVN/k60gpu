@@ -14,7 +14,7 @@ echo '-------------'
 
 #echo '------- Starting myapp4 in 1 node with 1 cpu per node with maxtime by 2 minutes ------'
 echo '------- mpirun -np 1 -ppn 1 -maxtime 2 ./myapp4 --------'
-mpirun -np 1 -ppn 1 -maxtime 2 ./myapp3
+mpirun -np 1 -ppn 1 -maxtime 2 ./myapp4
 
 #echo '------- mpirun -np 2 -ppn 1 -maxtime 2 ./myapp4 --------'
 #mpirun -np 2 -ppn 1 -maxtime 2 ./myapp4
