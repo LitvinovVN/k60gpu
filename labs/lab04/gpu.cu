@@ -63,3 +63,7 @@ int gpu(int x, int y){
 	
 	return res;
 }
+
+extern "C" void multiGpuTest(){
+	std::cerr << "multiGpuTest()" << std::endl;
+}
