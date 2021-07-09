@@ -24,6 +24,8 @@ int main (int argc, char* argv[])
     int res_gpu = gpu(5, 15);
     std::cerr<<"res_gpu = "<<res_gpu<<" (rank = "<<rank<<")"<<std::endl;
 
+    multiGpuTest();
+
     MPI_Finalize();
     return 0;
 }
