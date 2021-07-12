@@ -7,9 +7,16 @@
 
 using namespace std;
 
-void testSum2Arrays(int rank, int size)
+void testSum2Arrays(int mpi_rank, int mpi_size, int cpuThreadsPerNode, int nGpu)
 {
-    cout << "testSum2Arrays" << std::endl;
+    cout << "----------------------------------------" << std::endl;
+    cout << "-------------testSum2Arrays-------------" << std::endl;
+    cout << "--- mpi_rank = "           << mpi_rank             << std::endl;
+    cout << "--- mpi_size = "           << mpi_size             << std::endl;
+    cout << "--- cpuThreadsPerNode = "  << cpuThreadsPerNode    << std::endl;
+    cout << "--- nGpu = "               << nGpu                 << std::endl;
+
+    size_t = size * 
 }
 
 int main (int argc, char* argv[])
@@ -19,7 +26,7 @@ int main (int argc, char* argv[])
     MPI_Barrier( MPI_COMM_WORLD );
 
     double t1 = MPI_Wtime();
-    testSum2Arrays(rank, size); 
+    testSum2Arrays(rank, size, 62, 4); 
     double t2 = MPI_Wtime();  
     double t = t2-t1;
     printf("Rank %d: Time of testThreads: %lf sec\n",rank, t);
