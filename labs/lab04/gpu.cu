@@ -66,6 +66,8 @@ int gpu(int x, int y){
 
 
 //////////////////////////////////////////////////////////////////////
+#define imin(a,b) (a<b?a:b)
+
 #define     N    (33*1024*1024)
 	const int threadsPerBlock = 256;
 	const int blocksPerGrid =
