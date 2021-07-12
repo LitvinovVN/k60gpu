@@ -329,9 +329,7 @@ extern "C" void multiGpuTest(){
 //#include <cstdio>
 
 __global__ void k(int n){
-	printf("hello from thread %d\n", n);
-	//__nanosleep(1000000000*n);
-	//printf("hello from thread %d after sleeping\n", n);
+	printf("hello from thread %d\n", n);	
 }
   
 void thread_func(int n){
