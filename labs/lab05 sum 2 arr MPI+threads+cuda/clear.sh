@@ -1,13 +1,13 @@
 clear
 
-echo '------ Stopping task myapp4.1: mcancel myapp4.1 -------'
-mcancel myapp4.1
-echo '------ Stopping task myapp4.2: mcancel myapp4.2 -------'
-mcancel myapp4.2
-echo '------ Stopping task myapp4.3: mcancel myapp4.3 -------'
-mcancel myapp4.3
+echo '------ Stopping task myapp5.1: mcancel myapp5.1 -------'
+mcancel myapp5.1
+echo '------ Stopping task myapp5.2: mcancel myapp5.2 -------'
+mcancel myapp5.2
+echo '------ Stopping task myapp5.3: mcancel myapp5.3 -------'
+mcancel myapp5.3
 
 echo '------ Removing temporary files -------'
-rm -r myapp4.*
-rm *.o myapp4
+rm -r myapp5.*
+rm *.o myapp5
 echo '------ Temporary files removed ------'
