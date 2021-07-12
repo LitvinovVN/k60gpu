@@ -323,6 +323,11 @@ extern "C" void multiGpuTest(){
 
 ////////////////////////////////////////////////////////////////////////////
 //// https://coderoad.ru/57173023/использование-std-thread-и-CUDA-вместе ///
+#include <thread>
+#include <vector>
+//#include <iostream>
+//#include <cstdio>
+
 __global__ void k(int n){
 	printf("hello from thread %d\n", n);
 }
