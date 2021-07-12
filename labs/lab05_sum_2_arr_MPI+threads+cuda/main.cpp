@@ -24,6 +24,9 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     size_t numElementsInNode = cpuThreadsPerNode * numElementsPerThread + numGpu * numElementsPerGpu;
     size_t numElements = mpi_size * numElementsInNode;
 
+    cout << "numElementsInNode = " << numElementsInNode    << std::endl;
+    cout << "numElements = "       << numElements    << std::endl;
+
     double* a = (double*)malloc(numElements * sizeof(*a));
     double* b = (double*)malloc(numElements * sizeof(*b));
     double* c = (double*)malloc(numElements * sizeof(*b));
