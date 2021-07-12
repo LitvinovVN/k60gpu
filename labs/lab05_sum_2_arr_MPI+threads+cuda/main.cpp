@@ -25,13 +25,15 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     size_t numElements = mpi_size * numElementsInNode;
 
     double* a = (double*)malloc(numElements * sizeof(*a));
+    double* b = (double*)malloc(numElements * sizeof(*b));
 
     for(int i = 0; i < numElements; i++)
     {
         a[i] = i;
+        b[i] = 2 * i;
         if(i<100)
         {
-            std::cerr << "a[" << i << "] = " << a[i] << std::endl;
+            std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << std::endl;
         }
     }
 
