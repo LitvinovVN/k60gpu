@@ -35,3 +35,27 @@ void testThreads(int rank){
 		thr.join();
 	}    
 }
+
+
+
+
+////////////////////////////
+extern "C"
+void thread_sum() {
+    fprintf(stderr, "Thread started (thread_sum)... \n");  
+
+    //fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d ms \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
+}
+
+extern "C"
+void sum2Arrays(){    
+    std::vector<std::thread> threads;
+	for(int i = 0; i < std::thread::hardware_concurrency()-1; i++) {
+		std::thread thr(thread_sum);
+		threads.emplace_back(std::move(thr));
+	}
+	
+	for(auto& thr : threads) {
+		thr.join();
+	}    
+}
