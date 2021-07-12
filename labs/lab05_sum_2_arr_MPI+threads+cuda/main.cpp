@@ -23,6 +23,18 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
 
     size_t numElementsInNode = cpuThreadsPerNode * numElementsPerThread + numGpu * numElementsPerGpu;
     size_t numElements = mpi_size * numElementsInNode;
+
+    double* a = (double*)malloc(numElements * sizeof(*a));
+
+    for(int i = 0; i < numElements; i++)
+    {
+        a[i] = i;
+        if(i<100)
+        {
+            std::stderr << "a[" << i << "] = " << a[i] << std::endl;
+        }
+    }
+
 }
 
 int main (int argc, char* argv[])
