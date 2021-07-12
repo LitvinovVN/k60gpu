@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void testSum2Arrays(rank, size)
+void testSum2Arrays(int rank, int size)
 {
     cout << "testSum2Arrays" << std::endl;
 }
