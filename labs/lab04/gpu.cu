@@ -270,6 +270,12 @@ void wait_for_threads( const CUTThread *threads, int num );
 extern "C" void multiGpuTest(){
 	std::cerr << "multiGpuTest()" << std::endl;
 
+	#define     N    (33*1024*1024)
+	const int threadsPerBlock = 256;
+	const int blocksPerGrid =
+            imin( 32, (N/2+threadsPerBlock-1) / threadsPerBlock );
+
+
 	int deviceCount;
     HANDLE_ERROR( cudaGetDeviceCount( &deviceCount ) );
     if (deviceCount < 2) {
