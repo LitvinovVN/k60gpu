@@ -29,7 +29,8 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
 
     double* a = (double*)malloc(numElements * sizeof(*a));
     double* b = (double*)malloc(numElements * sizeof(*b));
-    double* c = (double*)malloc(numElements * sizeof(*b));
+    double* c = (double*)malloc(numElements * sizeof(*c));
+    double* c_par = (double*)malloc(numElements * sizeof(*c_par));
 
     for(int i = 0; i < numElements; i++)
     {
@@ -53,7 +54,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << std::endl;
     }
 
-    sum2Arrays();
+    sum2Arrays(a, b, c_par);
 }
 
 int main (int argc, char* argv[])
