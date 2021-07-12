@@ -40,12 +40,10 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         c[i] = a[i] + b[i];        
     }
 
-    for(int i = 0; i < numElements; i++)
+    // Вывод первых 100 элементов массивов
+    for(int i = 0; i < 100; i++)
     {        
-        if(i<100)
-        {
-            std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << std::endl;
-        }
+        std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << std::endl;
     }
 
 }
