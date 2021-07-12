@@ -25,7 +25,7 @@ mps
 echo '------- Task list: pult t ---------'
 pult t
 
-echo '------- Status of executed task: mqtest myapp4.1 --------'
+echo '------- Status of executed task: mqtest myapp5.1 --------'
 mqtest myapp5.1
 #mqtest myapp5.2
 #mqtest myapp5.3
