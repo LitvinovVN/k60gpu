@@ -15,8 +15,9 @@ void testSum2Arrays(int mpi_rank, int mpi_size, int cpuThreadsPerNode, int nGpu)
     cout << "--- mpi_size = "           << mpi_size             << std::endl;
     cout << "--- cpuThreadsPerNode = "  << cpuThreadsPerNode    << std::endl;
     cout << "--- nGpu = "               << nGpu                 << std::endl;
+    cout << "----------------------------------------" << std::endl;
 
-    size_t = size * 
+    //size_t = size * 
 }
 
 int main (int argc, char* argv[])
