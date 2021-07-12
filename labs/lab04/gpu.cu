@@ -356,7 +356,7 @@ extern "C" void multiGpuTest2(){
 
 	int n = 0;
   	cudaError_t err = cudaGetDeviceCount(&n);
-  	if (err != cudaSuccess) {std::cout << "error " << (int)err << std::endl; return 0;}
+  	if (err != cudaSuccess) {std::cout << "error " << (int)err << std::endl; return;}
 
   	std::vector<std::thread> t;
   	for (int i = 0; i < n; i++)
