@@ -31,7 +31,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         a[i] = i;
         if(i<100)
         {
-            std::stderr << "a[" << i << "] = " << a[i] << std::endl;
+            std::cerr << "a[" << i << "] = " << a[i] << std::endl;
         }
     }
 
