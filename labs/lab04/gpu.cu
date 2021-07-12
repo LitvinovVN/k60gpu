@@ -328,13 +328,13 @@ extern "C" void multiGpuTest(){
 //#include <iostream>
 //#include <cstdio>
 
-__global__ void k(int n){
+__global__ void printHelloFromThreadN_kernel(int n){
 	printf("hello from thread %d\n", n);	
 }
   
 void thread_func(int n){
 	cudaSetDevice(n);
-	k<<<1,1>>>(n);
+	printHelloFromThreadN_kernel<<<1,1>>>(n);
 	cudaDeviceSynchronize();
 }
 
