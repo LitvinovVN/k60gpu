@@ -282,7 +282,7 @@ extern "C" void multiGpuTest(){
     if (deviceCount < 2) {
         printf( "We need at least two compute 1.0 or greater "
                 "devices, but only found %d\n", deviceCount );
-        return 0;
+        return;
     }
 
     float   *a = (float*)malloc( sizeof(float) * N );
