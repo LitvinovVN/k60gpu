@@ -333,26 +333,9 @@ __global__ void k(int n){
 }
   
 void thread_func(int n){
-	if (n >= 0)
-	{
-	  	cudaSetDevice(n);
-	  	k<<<1,1>>>(n);
-	  	cudaDeviceSynchronize();
-	}
-	else
-	{
-	  	cudaError_t err = cudaGetDeviceCount(&n);
-		for (int i = 0; i < n; i++)
-		{
-			cudaSetDevice(i);
-			k<<<1,1>>>(-1);
-		}
-	 	for (int i = 0; i <n; i++)
-		{
-			cudaSetDevice(i);
-			cudaDeviceSynchronize();
-		}
-	}
+	cudaSetDevice(n);
+	k<<<1,1>>>(n);
+	cudaDeviceSynchronize();
 }
 
 
@@ -370,8 +353,5 @@ extern "C" void multiGpuTest2(){
 
   	for (int i = 0; i < n; i++)
     	t[i].join();
-  	std::cout << "join finished" << std::endl;
-  	std::thread ta(thread_func, -1);
-  	ta.join();
-  	std::cout << "finished" << std::endl;
+  	std::cout << "join finished" << std::endl;  	
 }
