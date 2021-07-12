@@ -320,3 +320,53 @@ extern "C" void multiGpuTest(){
     printf( "Value calculated:  %f\n",
             data[0].returnValue + data[1].returnValue );
 }
+
+////////////////////////////////////////////////////////////////////////////
+//// https://coderoad.ru/57173023/использование-std-thread-и-CUDA-вместе ///
+__global__ void k(int n){
+	printf("hello from thread %d\n", n);
+}
+  
+void thread_func(int n){
+	if (n >= 0)
+	{
+	  	cudaSetDevice(n);
+	  	k<<<1,1>>>(n);
+	  	cudaDeviceSynchronize();
+	}
+	else
+	{
+	  	cudaError_t err = cudaGetDeviceCount(&n);
+		for (int i = 0; i < n; i++)
+		{
+			cudaSetDevice(i);
+			k<<<1,1>>>(-1);
+		}
+	 	for (int i = 0; i <n; i++)
+		{
+			cudaSetDevice(i);
+			cudaDeviceSynchronize();
+		}
+	}
+}
+
+
+extern "C" void multiGpuTest2(){
+	std::cerr << "multiGpuTest2()" << std::endl;
+
+	int n = 0;
+  	cudaError_t err = cudaGetDeviceCount(&n);
+  	if (err != cudaSuccess) {std::cout << "error " << (int)err << std::endl; return 0;}
+
+  	std::vector<std::thread> t;
+  	for (int i = 0; i < n; i++)
+    	t.push_back(std::thread(thread_func, i));
+  	std::cout << n << " threads started" << std::endl;
+
+  	for (int i = 0; i < n; i++)
+    	t[i].join();
+  	std::cout << "join finished" << std::endl;
+  	std::thread ta(thread_func, -1);
+  	ta.join();
+  	std::cout << "finished" << std::endl;
+}
