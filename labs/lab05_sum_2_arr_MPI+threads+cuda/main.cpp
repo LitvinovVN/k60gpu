@@ -35,10 +35,14 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     }
 
     // Последовательное суммирование
+    double t1 = MPI_Wtime();
     for(int i = 0; i < numElements; i++)
     {
         c[i] = a[i] + b[i];        
     }
+    double t2 = MPI_Wtime();  
+    double t = t2-t1;
+    printf("Time of sequential summation: %lf sec\n", t);
 
     // Вывод первых 100 элементов массивов
     for(int i = 0; i < 100; i++)
