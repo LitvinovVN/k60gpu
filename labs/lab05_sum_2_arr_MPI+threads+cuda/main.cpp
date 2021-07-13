@@ -10,6 +10,13 @@
 
 using namespace std;
 
+void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread) {
+    for(int indx = nStart; indx < nStart+numElementsPerThread; indx++)
+	{
+		c_par[indx] = a[indx] + b[indx];
+	}     
+}
+
 void testSum2Arrays(int mpi_rank, int mpi_size,
                     int cpuThreadsPerNode, int numElementsPerThread,
                     int numGpu, int numElementsPerGpu)
