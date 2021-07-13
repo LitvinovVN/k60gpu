@@ -1,5 +1,5 @@
 
-//#include <mpi.h>
+#include <cuda.h>
 #include <iostream>
 #include <thread>
 #include <vector>
