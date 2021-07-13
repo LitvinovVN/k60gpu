@@ -48,7 +48,11 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     double t = t2-t1;
     printf("Time of sequential summation: %lf sec\n", t);
     
+    t1 = MPI_Wtime();
     sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
+    t2 = MPI_Wtime();
+    t = t2-t1;
+    printf("Time of parallel summation: %lf sec\n", t);
 
     // Вывод первых 100 элементов массивов
     for(int i = 0; i < 100; i++)
