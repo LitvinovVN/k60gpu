@@ -105,7 +105,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     cudaEventSynchronize(stop);
     float elapsedTimePar;
     cudaEventElapsedTime(&elapsedTimePar, start, stop);
-    //printf("Time of parallel summation: %lf sec\n", t);
+    printf("Time of parallel summation: %lf sec\n", elapsedTimePar/1000);
 
     // Вывод первых 100 элементов массивов
     for(int i = 0; i < 100; i++)
