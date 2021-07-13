@@ -81,7 +81,8 @@ int main (int argc, char* argv[])
     double t1 = MPI_Wtime();
     //testSum2Arrays(rank, size, 1, 62 * 10000000, 0, 20000000);
     //testSum2Arrays(rank, size, 2, 31 * 10000000, 0, 20000000);
-    testSum2Arrays(rank, size, 4, 31 * 5000000, 0, 20000000);
+    //testSum2Arrays(rank, size, 4, 31 * 5000000, 0, 20000000);
+    testSum2Arrays(rank, size, 8, 31 * 2500000, 0, 20000000);
 
     //testSum2Arrays(rank, size, 62, 10000000, 4, 20000000);
     double t2 = MPI_Wtime();  
