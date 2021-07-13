@@ -54,7 +54,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << std::endl;
     }
 
-    sum2Arrays(a, b, c_par);
+    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
 }
 
 int main (int argc, char* argv[])
