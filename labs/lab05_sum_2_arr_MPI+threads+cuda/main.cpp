@@ -61,7 +61,14 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     }
 
     // Вывод неверно рассчитанных элементов массивов
-
+    for(int i = 0; i < numElements; i++)
+    {
+        if(c[i]-c_par[i] > 0.001)
+        {
+            std::cerr << "ERROR! Checking stopped! " << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
+            break;
+        }
+    }
 
 }
 
