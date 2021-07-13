@@ -53,15 +53,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
     
     // GPU start
-    multiGpuSum2Arrays();
-
-    
-
-    // CPU wait
-	for(auto& thr : threads) {
-		thr.join();
-	}    
-
+    multiGpuSum2Arrays();    
 
     t2 = MPI_Wtime();
     t = t2-t1;
