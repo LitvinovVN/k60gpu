@@ -3,6 +3,38 @@
 #include <iostream>
 #include "sum.h"
 
+
+void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread) {
+    for(int indx = nStart; indx < nStart+numElementsPerThread; indx++)
+	{
+		c_par[indx] = a[indx] + b[indx];
+	}
+	
+	//fprintf(stderr, "Thread started (thread_sum)... %d %d \n", nStart, nStart+numElementsPerThread);  
+
+    //fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d ms \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
+}
+
+void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread){
+    std::vector<std::thread> threads;
+	for(int i = 0; i < cpuThreadsPerNode; i++) {
+		size_t nStart = i * numElementsPerThread;		
+		std::thread thr(thread_sum, a, b, c_par, nStart, numElementsPerThread);
+		threads.emplace_back(std::move(thr));
+	}
+	
+	for(auto& thr : threads) {
+		thr.join();
+	}    
+}
+
+
+
+void multiGpuSum2Arrays(){
+    std::cout << "multiGpuSum2Arrays()" << std::endl;
+}
+
+
 extern "C"
 void testSum2Arrays(int mpi_rank, int mpi_size,
     int cpuThreadsPerNode, int numElementsPerThread,
@@ -72,8 +104,4 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         }
     }
 
-}
-
-void multiGpuSum2Arrays(){
-    std::cout << "multiGpuSum2Arrays()" << std::endl;
 }
