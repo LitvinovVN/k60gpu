@@ -42,7 +42,12 @@ void testThreads(int rank){
 ////////////////////////////
 extern "C"
 void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread) {
-    fprintf(stderr, "Thread started (thread_sum)... %d %d \n", nStart, nStart+numElementsPerThread);  
+    for(int indx = nStart; indx < nStart+numElementsPerThread; indx++)
+	{
+		c_par[indx] = a[indx] + b[indx];
+	}
+	
+	fprintf(stderr, "Thread started (thread_sum)... %d %d \n", nStart, nStart+numElementsPerThread);  
 
     //fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d ms \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
 }

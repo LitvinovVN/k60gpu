@@ -47,14 +47,14 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     double t2 = MPI_Wtime();  
     double t = t2-t1;
     printf("Time of sequential summation: %lf sec\n", t);
+    
+    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
 
     // Вывод первых 100 элементов массивов
     for(int i = 0; i < 100; i++)
     {        
-        std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << std::endl;
+        std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
     }
-
-    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
 }
 
 int main (int argc, char* argv[])
