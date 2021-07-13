@@ -79,6 +79,9 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         b[i] = 2.0 * i;
     }
 
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
     // Последовательное суммирование
     //double t1 = MPI_Wtime();
     for(int i = 0; i < numElements; i++)
