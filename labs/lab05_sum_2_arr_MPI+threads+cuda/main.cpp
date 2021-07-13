@@ -68,7 +68,8 @@ int main (int argc, char* argv[])
     MPI_Barrier( MPI_COMM_WORLD );
 
     double t1 = MPI_Wtime();
-    testSum2Arrays(rank, size, 62, 10000000, 4, 20000000);
+    testSum2Arrays(rank, size, 62, 10000000, 0, 20000000);
+    //testSum2Arrays(rank, size, 62, 10000000, 4, 20000000);
     double t2 = MPI_Wtime();  
     double t = t2-t1;
     printf("Rank %d: Time of testThreads: %lf sec\n",rank, t);
