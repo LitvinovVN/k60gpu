@@ -3,6 +3,7 @@
 
 #include <thread>
 #include <vector>
+#include <cuda.h>
 
 #include "utils.h"
 #include "cpuThreads.h"
