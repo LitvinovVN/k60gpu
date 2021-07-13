@@ -41,8 +41,8 @@ void testThreads(int rank){
 
 ////////////////////////////
 extern "C"
-void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t nEnd) {
-    fprintf(stderr, "Thread started (thread_sum)... %d %d \n", nStart, nEnd);  
+void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread) {
+    fprintf(stderr, "Thread started (thread_sum)... %d %d \n", nStart, nStart+numElementsPerThread);  
 
     //fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. pauseTime = %d ms \n", MPI_Wtime(), rank, getpid(), tnum, pauseTime);    
 }
@@ -51,9 +51,8 @@ extern "C"
 void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread){
     std::vector<std::thread> threads;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
-		size_t nStart = i;
-		size_t nEnd = i+10;
-		std::thread thr(thread_sum, a, b, c_par, nStart, nEnd);
+		size_t nStart = i * numElementsPerThread;		
+		std::thread thr(thread_sum, a, b, c_par, nStart, numElementsPerThread);
 		threads.emplace_back(std::move(thr));
 	}
 	
