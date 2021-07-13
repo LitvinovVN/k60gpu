@@ -355,3 +355,9 @@ extern "C" void multiGpuTest2(){
     	t[i].join();
   	std::cout << "join finished" << std::endl;  	
 }
+
+////////////////////////////////////////////
+
+extern "C" void multiGpuSum2Arrays(){
+    std::cout << "multiGpuSum2Arrays()" << std::endl;
+}

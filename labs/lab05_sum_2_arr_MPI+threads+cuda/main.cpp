@@ -70,7 +70,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
 	}
 	
     // GPU start
-    multiGpuTest2();
+    multiGpuSum2Arrays();
 
     
 
