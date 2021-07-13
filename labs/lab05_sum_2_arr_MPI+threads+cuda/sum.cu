@@ -59,11 +59,16 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     std::cout << "numElements = "       << numElements    << std::endl;
 
     //double* a = (double*)malloc(numElements * sizeof(*a));
-    double* a;
+    //double* b = (double*)malloc(numElements * sizeof(*b));
+    //double* c = (double*)malloc(numElements * sizeof(*c));
+    //double* c_par = (double*)malloc(numElements * sizeof(*c_par));
+    
+    double* a, b, c, c_par;
     cudaHostAlloc((void**)&a, numElements * sizeof(*a), cudaHostAllocDefault);
-    double* b = (double*)malloc(numElements * sizeof(*b));
-    double* c = (double*)malloc(numElements * sizeof(*c));
-    double* c_par = (double*)malloc(numElements * sizeof(*c_par));
+    cudaHostAlloc((void**)&b, numElements * sizeof(*b), cudaHostAllocDefault);
+    cudaHostAlloc((void**)&c, numElements * sizeof(*c), cudaHostAllocDefault);
+    cudaHostAlloc((void**)&c_par, numElements * sizeof(*c_par), cudaHostAllocDefault);
+    
 
     for(int i = 0; i < numElements; i++)
     {
