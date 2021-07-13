@@ -8,21 +8,21 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     int cpuThreadsPerNode, int numElementsPerThread,
     int numGpu, int numElementsPerGpu)
 {
-    cout << "----------------------------------------" << std::endl;
-    cout << "-------------testSum2Arrays-------------" << std::endl;
-    cout << "--- mpi_rank = "             << mpi_rank             << std::endl;
-    cout << "--- mpi_size = "             << mpi_size             << std::endl;
-    cout << "--- cpuThreadsPerNode = "    << cpuThreadsPerNode    << std::endl;
-    cout << "--- numElementsPerThread = " << numElementsPerThread << std::endl;
-    cout << "--- nGpu = "                 << numGpu               << std::endl;
-    cout << "--- numElementsPerGpu = "    << numElementsPerGpu    << std::endl;
-    cout << "----------------------------------------" << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+    std::cout << "-------------testSum2Arrays-------------" << std::endl;
+    std::cout << "--- mpi_rank = "             << mpi_rank             << std::endl;
+    std::cout << "--- mpi_size = "             << mpi_size             << std::endl;
+    std::cout << "--- cpuThreadsPerNode = "    << cpuThreadsPerNode    << std::endl;
+    std::cout << "--- numElementsPerThread = " << numElementsPerThread << std::endl;
+    std::cout << "--- nGpu = "                 << numGpu               << std::endl;
+    std::cout << "--- numElementsPerGpu = "    << numElementsPerGpu    << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 
     size_t numElementsInNode = cpuThreadsPerNode * numElementsPerThread + numGpu * numElementsPerGpu;
     size_t numElements = mpi_size * numElementsInNode;
 
-    cout << "numElementsInNode = " << numElementsInNode    << std::endl;
-    cout << "numElements = "       << numElements    << std::endl;
+    std::cout << "numElementsInNode = " << numElementsInNode    << std::endl;
+    std::cout << "numElements = "       << numElements    << std::endl;
 
     double* a = (double*)malloc(numElements * sizeof(*a));    
     double* b = (double*)malloc(numElements * sizeof(*b));
