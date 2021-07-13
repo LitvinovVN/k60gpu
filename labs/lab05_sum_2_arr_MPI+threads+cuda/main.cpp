@@ -61,6 +61,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     // Параллельное суммирование
     t1 = MPI_Wtime();
     //sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
+    // CPU start
     std::vector<std::thread> threads;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
 		size_t nStart = i * numElementsPerThread;		
@@ -68,6 +69,12 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
 		threads.emplace_back(std::move(thr));
 	}
 	
+    // GPU start
+    multiGpuTest2();
+
+    
+
+    // CPU wait
 	for(auto& thr : threads) {
 		thr.join();
 	}    
