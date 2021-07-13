@@ -3,7 +3,7 @@
 
 #include "utils.h"
 #include "cpuThreads.h"
-#include "gpu.h"
+//#include "gpu.h"
 
 #include "sum.h"
 
