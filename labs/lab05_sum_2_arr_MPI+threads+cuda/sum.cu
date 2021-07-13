@@ -92,7 +92,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     cudaEventSynchronize(stop);
     float elapsedTimeSeq;
     cudaEventElapsedTime(&elapsedTimeSeq, start, stop);
-    printf("Time of sequential summation: %lf sec\n", elapsedTimeSeq);
+    printf("Time of sequential summation: %lf sec\n", elapsedTimeSeq/1000);
 
     // Параллельное суммирование
     //t1 = MPI_Wtime();
