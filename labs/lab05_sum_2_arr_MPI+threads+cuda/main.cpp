@@ -1,22 +1,11 @@
 #include <mpi.h>
 #include <iostream>
 
-#include <thread>
-#include <vector>
-#include <cuda.h>
-
 #include "utils.h"
 #include "cpuThreads.h"
 #include "gpu.h"
 
 using namespace std;
-
-void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread) {
-    for(int indx = nStart; indx < nStart+numElementsPerThread; indx++)
-	{
-		c_par[indx] = a[indx] + b[indx];
-	}     
-}
 
 void testSum2Arrays(int mpi_rank, int mpi_size,
                     int cpuThreadsPerNode, int numElementsPerThread,
@@ -38,9 +27,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     cout << "numElementsInNode = " << numElementsInNode    << std::endl;
     cout << "numElements = "       << numElements    << std::endl;
 
-    //double* a = (double*)malloc(numElements * sizeof(*a));
-    double* a;
-    cudaHostAlloc((void**)&a, numElements * sizeof(*a), cudaHostAllocDefault);
+    double* a = (double*)malloc(numElements * sizeof(*a));    
     double* b = (double*)malloc(numElements * sizeof(*b));
     double* c = (double*)malloc(numElements * sizeof(*c));
     double* c_par = (double*)malloc(numElements * sizeof(*c_par));
@@ -63,15 +50,8 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     
     // Параллельное суммирование
     t1 = MPI_Wtime();
-    //sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
-    // CPU start
-    std::vector<std::thread> threads;
-	for(int i = 0; i < cpuThreadsPerNode; i++) {
-		size_t nStart = i * numElementsPerThread;		
-		std::thread thr(thread_sum, a, b, c_par, nStart, numElementsPerThread);
-		threads.emplace_back(std::move(thr));
-	}
-	
+    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
+    
     // GPU start
     multiGpuSum2Arrays();
 
