@@ -35,7 +35,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     for(int i = 0; i < numElements; i++)
     {
         a[i] = i;
-        b[i] = 2.0 * i;        
+        b[i] = 2.0 * i;
     }
 
     // Последовательное суммирование
@@ -48,8 +48,21 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     double t = t2-t1;
     printf("Time of sequential summation: %lf sec\n", t);
     
+    // Параллельное суммирование
     t1 = MPI_Wtime();
-    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
+    //sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
+    std::vector<std::thread> threads;
+	for(int i = 0; i < cpuThreadsPerNode; i++) {
+		size_t nStart = i * numElementsPerThread;		
+		std::thread thr(thread_sum, a, b, c_par, nStart, numElementsPerThread);
+		threads.emplace_back(std::move(thr));
+	}
+	
+	for(auto& thr : threads) {
+		thr.join();
+	}    
+
+
     t2 = MPI_Wtime();
     t = t2-t1;
     printf("Time of parallel summation: %lf sec\n", t);
@@ -83,8 +96,8 @@ int main (int argc, char* argv[])
     //testSum2Arrays(rank, size, 2, 31 * 10000000, 0, 20000000);
     //testSum2Arrays(rank, size, 4, 31 * 5000000, 0, 20000000);
     //testSum2Arrays(rank, size, 8, 31 * 2500000, 0, 20000000);
-    //testSum2Arrays(rank, size, 16, 31 * 1250000, 0, 20000000);
-    testSum2Arrays(rank, size, 31, 2 * 10000000, 0, 20000000);
+    testSum2Arrays(rank, size, 16, 31 * 1250000, 0, 20000000);
+    //testSum2Arrays(rank, size, 31, 2 * 10000000, 0, 20000000);
     //testSum2Arrays(rank, size, 32, 31 * 625000, 0, 20000000);
     //testSum2Arrays(rank, size, 62, 1 * 10000000, 0, 20000000);
     //testSum2Arrays(rank, size, 64, 31 * 312500, 0, 20000000);
