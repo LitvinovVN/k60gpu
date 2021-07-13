@@ -53,7 +53,7 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
 		size_t nStart = i;
 		size_t nEnd = i+10;
-		std::thread thr(thread_sum, a, b, c, nStart, nEnd);
+		std::thread thr(thread_sum, a, b, c_par, nStart, nEnd);
 		threads.emplace_back(std::move(thr));
 	}
 	
