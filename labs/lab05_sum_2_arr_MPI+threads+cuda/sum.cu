@@ -1,5 +1,5 @@
 
-#include <mpi.h>
+//#include <mpi.h>
 #include <iostream>
 #include "sum.h"
 
@@ -36,25 +36,25 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     }
 
     // Последовательное суммирование
-    double t1 = MPI_Wtime();
+    //double t1 = MPI_Wtime();
     for(int i = 0; i < numElements; i++)
     {
         c[i] = a[i] + b[i];        
     }
-    double t2 = MPI_Wtime();  
-    double t = t2-t1;
-    printf("Time of sequential summation: %lf sec\n", t);
+    //double t2 = MPI_Wtime();  
+    //double t = t2-t1;
+    //printf("Time of sequential summation: %lf sec\n", t);
 
     // Параллельное суммирование
-    t1 = MPI_Wtime();
+    //t1 = MPI_Wtime();
     sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
 
     // GPU start
     multiGpuSum2Arrays();    
 
-    t2 = MPI_Wtime();
-    t = t2-t1;
-    printf("Time of parallel summation: %lf sec\n", t);
+    //t2 = MPI_Wtime();
+    //t = t2-t1;
+    //printf("Time of parallel summation: %lf sec\n", t);
 
     // Вывод первых 100 элементов массивов
     for(int i = 0; i < 100; i++)
