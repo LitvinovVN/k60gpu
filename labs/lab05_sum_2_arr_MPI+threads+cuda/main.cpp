@@ -106,9 +106,9 @@ int main (int argc, char* argv[])
     //testSum2Arrays(rank, size, 2, 31 * 10000000, 0, 20000000);
     //testSum2Arrays(rank, size, 4, 31 * 5000000, 0, 20000000);
     //testSum2Arrays(rank, size, 8, 31 * 2500000, 0, 20000000);
-    testSum2Arrays(rank, size, 16, 31 * 1250000, 0, 20000000);
+    //testSum2Arrays(rank, size, 16, 31 * 1250000, 0, 20000000);
     //testSum2Arrays(rank, size, 31, 2 * 10000000, 0, 20000000);
-    //testSum2Arrays(rank, size, 32, 31 * 625000, 0, 20000000);
+    testSum2Arrays(rank, size, 32, 31 * 625000, 0, 20000000);
     //testSum2Arrays(rank, size, 62, 1 * 10000000, 0, 20000000);
     //testSum2Arrays(rank, size, 64, 31 * 312500, 0, 20000000);
 
