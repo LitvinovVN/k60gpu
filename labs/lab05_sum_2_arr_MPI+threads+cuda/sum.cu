@@ -57,11 +57,6 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 
 
 
-void multiGpuSum2Arrays(){
-    std::cout << "multiGpuSum2Arrays()" << std::endl;
-}
-
-
 extern "C"
 void testSum2Arrays(int mpi_rank, int mpi_size,
     int cpuThreadsPerNode, int numElementsPerThread,
