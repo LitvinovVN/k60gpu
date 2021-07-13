@@ -1,6 +1,8 @@
 
 //#include <mpi.h>
 #include <iostream>
+#include <thread>
+#include <vector>
 #include "sum.h"
 
 
