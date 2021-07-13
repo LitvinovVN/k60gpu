@@ -6,6 +6,20 @@
 #include "sum.h"
 
 
+
+__global__ void printHelloFromThreadN_kernel(int n){
+	printf("hello from thread %d\n", n);	
+}
+  
+void thread_func(int n){
+	cudaSetDevice(n);
+	printHelloFromThreadN_kernel<<<1,1>>>(n);
+	cudaDeviceSynchronize();
+}
+
+
+
+
 void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread) {
     for(int indx = nStart; indx < nStart+numElementsPerThread; indx++)
 	{
@@ -21,6 +35,21 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 		threads.emplace_back(std::move(thr));
 	}
 	
+    /////
+    int n = 0;
+  	cudaError_t err = cudaGetDeviceCount(&n);
+  	if (err != cudaSuccess) {std::cout << "error " << (int)err << std::endl; return;}
+
+  	std::vector<std::thread> t;
+  	for (int i = 0; i < n; i++)
+    	t.push_back(std::thread(thread_func, i));
+  	std::cout << n << " threads started" << std::endl;
+
+  	for (int i = 0; i < n; i++)
+    	t[i].join();
+  	std::cout << "join finished" << std::endl;
+    /////
+
 	for(auto& thr : threads) {
 		thr.join();
 	}    
