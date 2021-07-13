@@ -89,7 +89,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
         c[i] = a[i] + b[i];        
     }
     cudaEventRecord(stop, 0); 
-    cudaEventSyncronize(stop);
+    cudaEventSynchronize(stop);
     float elapsedTimeSeq;
     cudaEventElapsedTime(&elapsedTimeSeq, start, stop);
     printf("Time of sequential summation: %lf sec\n", elapsedTimeSeq);
