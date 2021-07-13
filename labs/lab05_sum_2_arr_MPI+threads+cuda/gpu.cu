@@ -357,7 +357,3 @@ extern "C" void multiGpuTest2(){
 }
 
 ////////////////////////////////////////////
-
-extern "C" void multiGpuSum2Arrays(){
-    std::cout << "multiGpuSum2Arrays()" << std::endl;
-}
