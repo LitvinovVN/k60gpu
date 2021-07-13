@@ -73,3 +73,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     }
 
 }
+
+extern "C" void multiGpuSum2Arrays(){
+    std::cout << "multiGpuSum2Arrays()" << std::endl;
+}
