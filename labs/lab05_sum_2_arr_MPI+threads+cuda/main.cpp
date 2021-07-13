@@ -1,5 +1,8 @@
 #include <mpi.h>
-#include <iostream> 
+#include <iostream>
+
+#include <thread>
+#include <vector>
 
 #include "utils.h"
 #include "cpuThreads.h"
