@@ -9,10 +9,10 @@
 
 __global__ void sum_kernel(double* a, double* b, double* c_par, int dev_indx, int nStart, int nBlocks, int nThreads, int numElementsPerGpuThread){
     int tid = threadIdx.x + blockIdx.x * blockDim.x;
-    if(tid == 0)
-    {
+    //if(tid == 0)
+    //{
         printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d | numElementsPerGpuThread = %d\n", dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
-    }
+    //}
 
     size_t indx = nStart + tid;
     c_par[indx] = a[indx] + b[indx];		
