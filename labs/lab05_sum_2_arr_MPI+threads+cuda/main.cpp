@@ -8,8 +8,9 @@ using namespace std;
 int main (int argc, char* argv[])
 {    
     int rank, size, provided;    
-    mpi_init(argc, argv, MPI_THREAD_FUNNELED, provided, rank, size);     
-    MPI_Barrier( MPI_COMM_WORLD );
+    MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);
+    MPI_Comm_rank (MPI_COMM_WORLD, &rank);
+    MPI_Comm_size (MPI_COMM_WORLD, &size);
 
     double t1 = MPI_Wtime();
     //testSum2Arrays(rank, size, 1, 62 * 10000000, 0, 20000000);
