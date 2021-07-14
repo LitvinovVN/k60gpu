@@ -11,7 +11,7 @@ __global__ void printHelloFromThreadN_kernel(int n){
 	printf("hello from thread %d\n", n);	
 }
   
-void thread_func(int n){
+void thread_sum_gpu(int n){
 	cudaSetDevice(n);
 	printHelloFromThreadN_kernel<<<1,1>>>(n);
 	cudaDeviceSynchronize();
@@ -37,18 +37,12 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 	}
 	
     /////
-    int n = 0;
-  	cudaError_t err = cudaGetDeviceCount(&n);
-  	if (err != cudaSuccess) {std::cout << "error " << (int)err << std::endl; return;}
-
-  	std::vector<std::thread> t;
-  	for (int i = 0; i < n; i++)
-    	t.push_back(std::thread(thread_func, i));
-  	std::cout << n << " threads started" << std::endl;
+  	std::vector<std::thread> t_gpu;
+  	for (int i = 0; i < numGpu; i++)
+      t_gpu.push_back(std::thread(thread_sum_gpu, i));  	
 
   	for (int i = 0; i < n; i++)
-    	t[i].join();
-  	std::cout << "join finished" << std::endl;
+      t_gpu[i].join();  	
     /////
 
 	for(auto& thr : threads) {
