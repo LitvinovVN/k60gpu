@@ -47,6 +47,7 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
     //size_t nBlocks = 10;
     //size_t nThreads = 100;
     //size_t numElementsPerGpuThread = 1000;
+    size_t numElementsPerGpu = nBlocks * nThreads * numElementsPerGpuThread;
   	for (int i = 0; i < numGpu; i++){
         size_t nStart = nGpuStart + i * numElementsPerGpu;
         t_gpu.push_back(std::thread(thread_sum_gpu, i, a, b, c_par, nStart, nBlocks, nThreads, numElementsPerGpuThread)); 
