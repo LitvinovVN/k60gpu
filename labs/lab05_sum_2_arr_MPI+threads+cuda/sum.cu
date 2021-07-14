@@ -7,15 +7,15 @@
 
 
 
-__global__ void printHelloFromThreadN_kernel(int dev_indx, int nStart, int nBlocks, int nThreads){
-	printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d\n", dev_indx, nStart, nBlocks, nThreads);	
+__global__ void sum_kernel(int dev_indx, int nStart, int nBlocks, int nThreads, int numElementsPerGpuThread){
+	printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d\n", dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);	
 }
   
-void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nStart, size_t nBlocks, size_t nThreads){
+void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nStart, size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread){
 	cudaSetDevice(dev_indx);
     dim3 blocks = dim3(nBlocks);
     dim3 threads = dim3(nThreads);
-	printHelloFromThreadN_kernel<<<blocks, threads>>>(dev_indx, nStart, nBlocks, nThreads);
+	sum_kernel<<<blocks, threads>>>(dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
 	cudaDeviceSynchronize();
 }
 
@@ -31,7 +31,7 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
     size_t numGpu, size_t numElementsPerGpu){
     std::vector<std::thread> threads;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
-		size_t nStart = i * numElementsPerThread;		
+		size_t nStart = i * numElementsPerThread;
 		std::thread thr(thread_sum, a, b, c_par, nStart, numElementsPerThread);
 		threads.emplace_back(std::move(thr));
 	}
