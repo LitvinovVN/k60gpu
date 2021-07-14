@@ -134,11 +134,11 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     cudaEventCreate(&startPar);
     cudaEventCreate(&stopPar);
     cudaEventRecord(startPar, 0);
-    auto start = std::chrono::system_clock::now();
+    auto start_sc = std::chrono::system_clock::now();
     sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread,
         numGpu, nBlocks, nThreads, numElementsPerGpuThread);
-    auto end = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end-start;
+    auto end_sc = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end_sc-start_sc;
     printf("Time of parallel summation system_clock: %lf sec\n", elapsed_seconds);
     cudaEventRecord(stopPar, 0); 
     cudaEventSynchronize(stopPar);    
