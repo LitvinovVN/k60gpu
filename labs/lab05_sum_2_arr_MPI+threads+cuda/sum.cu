@@ -8,7 +8,7 @@
 
 
 __global__ void sum_kernel(int dev_indx, int nStart, int nBlocks, int nThreads, int numElementsPerGpuThread){
-    int tid = threadIdx.x + blockIdx.x * BlockDim.x;
+    int tid = threadIdx.x + blockIdx.x * blockDim.x;
     if(tid == 0)
     {
         printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d | numElementsPerGpuThread = %d\n", dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
