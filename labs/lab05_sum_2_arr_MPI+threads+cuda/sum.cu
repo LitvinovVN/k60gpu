@@ -7,8 +7,8 @@
 
 
 
-__global__ void printHelloFromThreadN_kernel(int n){
-	printf("hello from thread %d\n", n);	
+__global__ void printHelloFromThreadN_kernel(int dev_indx, int nStart, int nBlocks, int nThreads){
+	printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d\n", dev_indx, nStart, nBlocks, nThreads);	
 }
   
 void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nStart, size_t nBlocks, size_t nThreads){
