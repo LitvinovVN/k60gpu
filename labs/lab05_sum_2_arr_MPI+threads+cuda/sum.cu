@@ -7,7 +7,7 @@
 
 
 
-__global__ void sum_kernel(int dev_indx, int nStart, int nBlocks, int nThreads, int numElementsPerGpuThread){
+__global__ void sum_kernel(double* a, double* b, double* c_par, int dev_indx, int nStart, int nBlocks, int nThreads, int numElementsPerGpuThread){
     int tid = threadIdx.x + blockIdx.x * blockDim.x;
     if(tid == 0)
     {
@@ -20,7 +20,7 @@ void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nS
 	cudaSetDevice(dev_indx);
     dim3 blocks = dim3(nBlocks);
     dim3 threads = dim3(nThreads);
-	sum_kernel<<<blocks, threads>>>(dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
+	sum_kernel<<<blocks, threads>>>(a, b, c_par, dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
 	cudaDeviceSynchronize();
 }
 
