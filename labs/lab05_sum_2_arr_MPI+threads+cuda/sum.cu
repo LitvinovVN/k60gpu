@@ -27,7 +27,8 @@ void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numEl
 	}
 }
 
-void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread){
+void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread,
+    size_t numGpu, size_t numElementsPerGpu){
     std::vector<std::thread> threads;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
 		size_t nStart = i * numElementsPerThread;		
@@ -59,8 +60,8 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 
 extern "C"
 void testSum2Arrays(int mpi_rank, int mpi_size,
-    int cpuThreadsPerNode, int numElementsPerThread,
-    int numGpu, int numElementsPerGpu)
+    size_t cpuThreadsPerNode, size_t numElementsPerThread,
+    size_t numGpu, size_t numElementsPerGpu)
 {
     std::cout << "----------------------------------------" << std::endl;
     std::cout << "-------------testSum2Arrays-------------" << std::endl;
@@ -116,13 +117,10 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
 
     // Параллельное суммирование
     cudaEventRecord(start, 0);
-    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread);
-
-    // GPU start
-    //multiGpuSum2Arrays();
-
+    sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread,
+        numGpu, numElementsPerGpu);
     cudaEventRecord(stop, 0); 
-    cudaEventSynchronize(stop);
+    cudaEventSynchronize(stop);    
     float elapsedTimePar;
     cudaEventElapsedTime(&elapsedTimePar, start, stop);
     printf("Time of parallel summation: %lf sec\n", elapsedTimePar/1000);
