@@ -69,15 +69,17 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     size_t cpuThreadsPerNode, size_t numElementsPerThread,
     size_t numGpu, size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread)
 {
-    std::cout << "----------------------------------------" << std::endl;
-    std::cout << "-------------testSum2Arrays-------------" << std::endl;
-    std::cout << "--- mpi_rank = "             << mpi_rank             << std::endl;
-    std::cout << "--- mpi_size = "             << mpi_size             << std::endl;
-    std::cout << "--- cpuThreadsPerNode = "    << cpuThreadsPerNode    << std::endl;
-    std::cout << "--- numElementsPerThread = " << numElementsPerThread << std::endl;
-    std::cout << "--- nGpu = "                 << numGpu               << std::endl;
-    std::cout << "--- numElementsPerGpu = "    << numElementsPerGpu    << std::endl;
-    std::cout << "----------------------------------------" << std::endl;
+    std::cout << "----------------------------------------"                     << std::endl;
+    std::cout << "-------------testSum2Arrays-------------"                     << std::endl;
+    std::cout << "--- mpi_rank = "                  << mpi_rank                 << std::endl;
+    std::cout << "--- mpi_size = "                  << mpi_size                 << std::endl;
+    std::cout << "--- cpuThreadsPerNode = "         << cpuThreadsPerNode        << std::endl;
+    std::cout << "--- numElementsPerThread = "      << numElementsPerThread     << std::endl;
+    std::cout << "--- nGpu = "                      << numGpu                   << std::endl;
+    std::cout << "--- nBlocks = "                   << nBlocks                  << std::endl;
+    std::cout << "--- nThreads = "                  << nThreads                 << std::endl;
+    std::cout << "--- numElementsPerGpuThread = "   << numElementsPerGpuThread  << std::endl;
+    std::cout << "----------------------------------------"                     << std::endl;
 
     size_t numElementsInNode = cpuThreadsPerNode * numElementsPerThread + numGpu * numElementsPerGpu;
     size_t numElements = mpi_size * numElementsInNode;
