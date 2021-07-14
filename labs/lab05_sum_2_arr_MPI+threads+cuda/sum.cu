@@ -39,31 +39,30 @@ void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numEl
 
 void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread,
     size_t numGpu, size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread){
-    std::vector<std::thread> threads;
+    // CPU threads starting
+    std::vector<std::thread> t_cpu_vec;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
 		size_t nStart = i * numElementsPerThread;
 		std::thread thr(thread_sum, a, b, c_par, nStart, numElementsPerThread);
-		threads.emplace_back(std::move(thr));
+		t_cpu_vec.emplace_back(std::move(thr));
 	}
 	
-    /////
+    // GPU threads starting
   	std::vector<std::thread> t_gpu;
-    size_t nGpuStart = cpuThreadsPerNode * numElementsPerThread;
-    //size_t nBlocks = 10;
-    //size_t nThreads = 100;
-    //size_t numElementsPerGpuThread = 1000;
+    size_t nGpuStart = cpuThreadsPerNode * numElementsPerThread;    
     size_t numElementsPerGpu = nBlocks * nThreads * numElementsPerGpuThread;
   	for (int i = 0; i < numGpu; i++){
         size_t nStart = nGpuStart + i * numElementsPerGpu;
         t_gpu.push_back(std::thread(thread_sum_gpu, i, a, b, c_par, nStart, nBlocks, nThreads, numElementsPerGpuThread)); 
     } 	
 
+    // GPU threads waiting
   	for (int i = 0; i < numGpu; i++)
       t_gpu[i].join();  	
-    /////
-
-	for(auto& thr : threads) {
-		thr.join();
+    
+    // CPU threads waiting
+	for(auto& t_cpu : t_cpu_vec) {
+		t_cpu.join();
 	}    
 }
 
