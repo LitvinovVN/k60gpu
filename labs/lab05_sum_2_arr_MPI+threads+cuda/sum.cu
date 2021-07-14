@@ -130,13 +130,16 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     printf("Time of sequential summation: %lf sec\n", elapsedTimeSeq/1000);
 
     // Параллельное суммирование
-    cudaEventRecord(start, 0);
+    cudaEvent_t startPar, stopPar;
+    cudaEventCreate(&startPar);
+    cudaEventCreate(&stopPar);
+    cudaEventRecord(startPar, 0);
     sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread,
         numGpu, nBlocks, nThreads, numElementsPerGpuThread);
-    cudaEventRecord(stop, 0); 
-    cudaEventSynchronize(stop);    
+    cudaEventRecord(stopPar, 0); 
+    cudaEventSynchronize(stopPar);    
     float elapsedTimePar;
-    cudaEventElapsedTime(&elapsedTimePar, start, stop);
+    cudaEventElapsedTime(&elapsedTimePar, startPar, stopPar);
     printf("Time of parallel summation: %lf sec\n", elapsedTimePar/1000);
 
     // Вывод элементов массивов
