@@ -128,7 +128,7 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     // Параллельное суммирование
     cudaEventRecord(start, 0);
     sum2Arrays(a, b, c_par, cpuThreadsPerNode, numElementsPerThread,
-        numGpu, numElementsPerGpu);
+        numGpu, nBlocks, nThreads, numElementsPerGpuThread);
     cudaEventRecord(stop, 0); 
     cudaEventSynchronize(stop);    
     float elapsedTimePar;
