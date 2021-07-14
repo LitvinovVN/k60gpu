@@ -141,19 +141,24 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     printf("Time of parallel summation: %lf sec\n", elapsedTimePar/1000);
 
     // Вывод элементов массивов
-    for(int i = 0; i < numElements; i++)
+    /*for(int i = 0; i < numElements; i++)
     {
         std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
-    }
+    }*/
 
     // Вывод неверно рассчитанных элементов массивов
+    bool isCorrect = true;
     for(int i = 0; i < numElements; i++)
     {
         if(c[i]-c_par[i] > 0.001)
         {
+            isCorrect = false;
             std::cerr << "ERROR! Checking stopped! " << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
             break;
         }
     }
+
+    if(isCorrect)
+        std::cerr << "Checking successed!" << std::endl;    
 
 }
