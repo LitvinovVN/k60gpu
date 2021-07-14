@@ -33,7 +33,7 @@ void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numEl
 }
 
 void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread,
-    size_t numGpu, , size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread){
+    size_t numGpu, size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread){
     std::vector<std::thread> threads;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
 		size_t nStart = i * numElementsPerThread;
