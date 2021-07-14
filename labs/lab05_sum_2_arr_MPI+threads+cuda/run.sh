@@ -4,11 +4,10 @@ cat description.md
 echo ''
 echo '------- Compiling main.c into main.o: mpicxx -O3 -c main.cpp ------'
 mpicxx -O3 -std=c++11 -c main.cpp
-mpicxx -O3 -std=c++11 -c utils.cpp
 echo '------- Compiling sum.cu into sum.o ------'
 nvcc -arch sm_70 --ptxas-options=-v  -std=c++11 -c sum.cu
-echo '-------- mpicxx -L/usr/local/cuda/lib64 -lcudart -lm -o myapp5 main.o utils.o sum.o -----'
-mpicxx -L/usr/local/cuda/lib64 -lcudart -lm -o myapp5 main.o utils.o sum.o
+echo '-------- mpicxx -L/usr/local/cuda/lib64 -lcudart -lm -o myapp5 main.o sum.o -----'
+mpicxx -L/usr/local/cuda/lib64 -lcudart -lm -o myapp5 main.o sum.o
 echo '-------------'
 
 echo '------- Starting myapp5 in 1 node with 1 cpu per node with maxtime by 2 minutes ------'
