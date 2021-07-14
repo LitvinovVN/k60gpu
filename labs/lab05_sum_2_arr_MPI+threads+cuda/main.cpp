@@ -1,6 +1,5 @@
 #include <mpi.h>
 #include <iostream>
-#include "utils.h"
 #include "sum.h"
 
 using namespace std;
