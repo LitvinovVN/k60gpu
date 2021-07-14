@@ -11,9 +11,11 @@ __global__ void printHelloFromThreadN_kernel(int n){
 	printf("hello from thread %d\n", n);	
 }
   
-void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerThread){
+void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nStart, size_t numElementsPerGpu){
 	cudaSetDevice(dev_indx);
-	printHelloFromThreadN_kernel<<<1,1>>>(dev_indx);
+    dim3 blocks = dim3(1);
+    dim3 threads = dim3(1);
+	printHelloFromThreadN_kernel<<<blocks,threads>>>(dev_indx);
 	cudaDeviceSynchronize();
 }
 
