@@ -11,7 +11,7 @@ __global__ void sum_kernel(double* a, double* b, double* c_par, int dev_indx, in
     int tid = threadIdx.x + blockIdx.x * blockDim.x;
     //if(tid == 0)
     //{
-        printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d | numElementsPerGpuThread = %d\n", dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
+    //    printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d | numElementsPerGpuThread = %d\n", dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
     //}  
 
     size_t indx_start = nStart + tid * numElementsPerGpuThread;
@@ -145,6 +145,10 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     {
         std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
     }*/
+    int i = 0;
+    std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
+    i = numElements - 1;
+    std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
 
     // Вывод неверно рассчитанных элементов массивов
     bool isCorrect = true;
