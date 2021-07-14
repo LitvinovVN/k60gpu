@@ -58,7 +58,7 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 
     // GPU threads waiting
   	for (int i = 0; i < numGpu; i++)
-      t_gpu_vec[i].join();  	
+        t_gpu_vec[i].join();  	
     
     // CPU threads waiting
 	for(auto& t_cpu : t_cpu_vec) {
