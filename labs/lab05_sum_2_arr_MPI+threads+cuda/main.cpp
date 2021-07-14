@@ -23,7 +23,7 @@ int main (int argc, char* argv[])
     //testSum2Arrays(rank, size, 64, 31 * 312500, 0, 20000000);
 
     testSum2Arrays(rank, size, 32, 10000000, 4, 10, 100, 1000);
-    double t2 = MPI_Wtime();  
+    double t2 = MPI_Wtime();
     double t = t2-t1;
     printf("Rank %d: Time of testThreads: %lf sec\n",rank, t);
     
