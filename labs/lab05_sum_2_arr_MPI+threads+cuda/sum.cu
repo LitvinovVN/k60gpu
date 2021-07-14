@@ -33,7 +33,7 @@ void thread_sum(double* a, double* b, double* c_par, size_t nStart, size_t numEl
 }
 
 void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, size_t numElementsPerThread,
-    size_t numGpu, size_t numElementsPerGpu){
+    size_t numGpu, , size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread){
     std::vector<std::thread> threads;
 	for(int i = 0; i < cpuThreadsPerNode; i++) {
 		size_t nStart = i * numElementsPerThread;
@@ -44,9 +44,9 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
     /////
   	std::vector<std::thread> t_gpu;
     size_t nGpuStart = cpuThreadsPerNode * numElementsPerThread;
-    size_t nBlocks = 10;
-    size_t nThreads = 100;
-    size_t numElementsPerGpuThread = 1000;
+    //size_t nBlocks = 10;
+    //size_t nThreads = 100;
+    //size_t numElementsPerGpuThread = 1000;
   	for (int i = 0; i < numGpu; i++){
         size_t nStart = nGpuStart + i * numElementsPerGpu;
         t_gpu.push_back(std::thread(thread_sum_gpu, i, a, b, c_par, nStart, nBlocks, nThreads, numElementsPerGpuThread)); 
@@ -66,7 +66,7 @@ void sum2Arrays(double* a, double* b, double* c_par, size_t cpuThreadsPerNode, s
 extern "C"
 void testSum2Arrays(int mpi_rank, int mpi_size,
     size_t cpuThreadsPerNode, size_t numElementsPerThread,
-    size_t numGpu, size_t numElementsPerGpu)
+    size_t numGpu, size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread)
 {
     std::cout << "----------------------------------------" << std::endl;
     std::cout << "-------------testSum2Arrays-------------" << std::endl;
@@ -130,8 +130,8 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     cudaEventElapsedTime(&elapsedTimePar, start, stop);
     printf("Time of parallel summation: %lf sec\n", elapsedTimePar/1000);
 
-    // Вывод первых 100 элементов массивов
-    for(int i = 0; i < 100; i++)
+    // Вывод элементов массивов
+    for(int i = 0; i < numElements; i++)
     {
         std::cerr << "a[" << i << "] = " << a[i] << "; b[" << i << "] = " << b[i] << "; c[" << i << "] = " << c[i] << "; c_par[" << i << "] = " << c_par[i] << std::endl;
     }
