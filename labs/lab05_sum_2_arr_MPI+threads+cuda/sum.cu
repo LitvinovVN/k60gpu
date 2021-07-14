@@ -12,10 +12,13 @@ __global__ void sum_kernel(double* a, double* b, double* c_par, int dev_indx, in
     //if(tid == 0)
     //{
         printf("dev_indx = %d | nStart = %d | nBlocks = %d | nThreads = %d | numElementsPerGpuThread = %d\n", dev_indx, nStart, nBlocks, nThreads, numElementsPerGpuThread);
-    //}
+    //}  
 
-    size_t indx = nStart + tid;
-    c_par[indx] = a[indx] + b[indx];		
+    size_t indx_start = nStart + tid * numElementsPerGpuThread;
+    for(int i = indx_start; i < indx_start + numElementsPerGpuThread; i++)
+    {        
+        c_par[i] = a[i] + b[i];
+    }
 }
   
 void thread_sum_gpu(int dev_indx, double* a, double* b, double* c_par, size_t nStart, size_t nBlocks, size_t nThreads, size_t numElementsPerGpuThread){
