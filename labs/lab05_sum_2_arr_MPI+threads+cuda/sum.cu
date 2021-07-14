@@ -81,7 +81,9 @@ void testSum2Arrays(int mpi_rank, int mpi_size,
     std::cout << "--- numElementsPerGpuThread = "   << numElementsPerGpuThread  << std::endl;
     std::cout << "----------------------------------------"                     << std::endl;
 
-    size_t numElementsInNode = cpuThreadsPerNode * numElementsPerThread + numGpu * numElementsPerGpu;
+    size_t numElementsInNodeCpu = cpuThreadsPerNode * numElementsPerThread;
+    size_t numElementsInNodeGpu = cpuThreadsPerNode * numElementsPerThread;
+    size_t numElementsInNode = numElementsInNodeCpu + numElementsInNodeGpu;
     size_t numElements = mpi_size * numElementsInNode;
 
     std::cout << "numElementsInNode = " << numElementsInNode    << std::endl;
