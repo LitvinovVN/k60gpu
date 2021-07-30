@@ -30,12 +30,20 @@ int main (int argc, char* argv[])
     int dataSize = numElements * sizeof(double);
     data = (double*)malloc(dataSize);
 
-    for(int i = 0; i<numElements; i++)
+    // Инициализируем массив на узле 0
+    if (rank == 0)
     {
-        data[i] = i;
-        fprintf(stderr, "data[%d] %lf. \n", i, data[i]);
+        for(int i = 0; i<numElements; i++)
+        {
+            data[i] = i;
+            fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
+        }
     }
-
+    
+    for(int i = 0; i<numElements; i++)
+    {            
+        fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
+    }
 
 
 
