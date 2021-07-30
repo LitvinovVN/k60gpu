@@ -35,7 +35,7 @@ int main (int argc, char* argv[])
     int tag0 = 0;
     int k;
 
-    for(numElements = 10000; numElements <= 500000; numElements+=10000)
+    for(numElements = 100; numElements <= 5000; numElements+=100)
     {
         for(k = 0; k < 100; k++)
         {
