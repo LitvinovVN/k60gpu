@@ -93,6 +93,8 @@ int main (int argc, char* argv[])
                 }
             }
 
+            fprintf(stderr, "k=%d, %lf\n", k, dtime[k]);
+
         }
 
         double Min = dtime[0];
@@ -113,7 +115,7 @@ int main (int argc, char* argv[])
         double Variance = VarSum / 99;
 
         // Вычисление среднего квадратичного отклонения StdDev
-        double StdDev = sqrt(Variance);
+        double StdDev = sqrt(abs(Variance));
 
         if(rank==0)
             {
