@@ -50,6 +50,7 @@ int main (int argc, char* argv[])
     int tag0 = 0;
     //MPI_Sendrecv(data, numElements, MPI_DOUBLE, 1, 10, data, numElements, MPI_DOUBLE, 0, 10, MPI_COMM_WORLD, &status);
     
+    double tStart = MPI_Wtime();
     if(rank==0)
     {
         MPI_Send(data, numElements, MPI_DOUBLE, 1, tag0, MPI_COMM_WORLD);
@@ -58,13 +59,19 @@ int main (int argc, char* argv[])
     {
         MPI_Recv(data, numElements, MPI_DOUBLE, 0, tag0, MPI_COMM_WORLD, &status);
     }
-
     MPI_Barrier(MPI_COMM_WORLD);
+    double tEnd = MPI_Wtime();
+    
+    if(rank==0)
+    {
+        fprintf(stderr, "%d %lf\n", numElements, tEnd-tStart);
+    }
+    
 
-    for(int i = 0; i<numElements; i++)
+    /*for(int i = 0; i<numElements; i++)
     {            
         fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
-    }
+    }*/
 
     MPI_Finalize();
     return 0;
