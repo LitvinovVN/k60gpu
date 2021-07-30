@@ -63,15 +63,61 @@ int main (int argc, char* argv[])
             MPI_Barrier(MPI_COMM_WORLD);
             double tEnd = MPI_Wtime();
 
+            // Получение экспериментальных данных: вычисление времени работы для каждого numElements, сохранение результатов в массив dtime
             dtime[k] = tEnd - tStart;
 
             if(rank==0)
             {
-                fprintf(stderr, "%d %d %lf\n", numElements, k, dtime[k]);
+                //fprintf(stderr, "%d %d %lf\n", numElements, k, dtime[k]);
             }
              
         }
         
+        double Sum = 0;
+        // Обработка результатов эксперимента
+        
+        for(k = 0; k < 100; k++)
+        {
+            // Вычисление суммы элементов
+            Sum = Sum + dtime[k];
+
+            // Упорядочивание элементов массива по возрастанию
+                for(int j=k; j<100; j++)
+            {
+                if(dtime[k]>dtime[j])
+                {
+                int temp=dtime[k];
+                dtime[k]=dtime[j];
+                dtime[j]=temp;
+                }
+            }
+
+        }
+
+        double Min = dtime[0];
+        double Max = dtime[99];
+        double Perc95 = dtime[94];
+
+        // Вычисление среднего значения AvgDtime
+        AvgDtime = Sum/100;
+
+        // Вычисление дисперсии Variance
+        double VarSum = 0;
+        
+        for(k = 0; k < 100; k++)
+        {
+            VarSum = VarSum + (dtime[k] - AvgDtime);
+        }
+        
+        Variance = VarSum / 99;
+
+        // Вычисление среднего квадратичного отклонения StdDev
+        StdDev = math.sqrt(Variance);
+
+        if(rank==0)
+            {
+                fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf\n", numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev);
+            }
       
     }
 
