@@ -45,6 +45,8 @@ int main (int argc, char* argv[])
         fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
     }
 
+    MPI_sendrecv(data, numElements, MPI_DOUBLE);
+    MPI_Barrier();
 
 
     MPI_Finalize();
