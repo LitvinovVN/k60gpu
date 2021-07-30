@@ -2,6 +2,7 @@
 #include <iostream> 
 #include <unistd.h>
 #include <malloc.h>
+#include <math.h>
 
 using namespace std;
 
@@ -99,7 +100,7 @@ int main (int argc, char* argv[])
         double Perc95 = dtime[94];
 
         // Вычисление среднего значения AvgDtime
-        AvgDtime = Sum/100;
+        double AvgDtime = Sum/100;
 
         // Вычисление дисперсии Variance
         double VarSum = 0;
@@ -109,10 +110,10 @@ int main (int argc, char* argv[])
             VarSum = VarSum + (dtime[k] - AvgDtime);
         }
         
-        Variance = VarSum / 99;
+        double Variance = VarSum / 99;
 
         // Вычисление среднего квадратичного отклонения StdDev
-        StdDev = math.sqrt(Variance);
+        double StdDev = math.sqrt(Variance);
 
         if(rank==0)
             {
