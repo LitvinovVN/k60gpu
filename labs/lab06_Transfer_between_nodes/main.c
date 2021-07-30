@@ -125,7 +125,11 @@ int main (int argc, char* argv[])
             // Вычисление среднего квадратичного отклонения StdDev
             double StdDev = sqrt(abs(Variance));
 
-            fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf\n", numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev);
+            // Вычисление скорости передачи данных между узлами ElementsSec
+            double ElementsSec = numElements / Perc95;
+
+            fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf, ElementsSec=%lf\n",
+                    numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev, ElementsSec);
                 
             }
         
