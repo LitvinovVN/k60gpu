@@ -67,7 +67,7 @@ int main (int argc, char* argv[])
 
             if(rank==0)
             {
-                fprintf(stderr, "%d %lf\n", numElements, dtime[k]);
+                fprintf(stderr, "%d %d %lf\n", numElements, k, dtime[k]);
             }
              
         }
