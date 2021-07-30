@@ -24,49 +24,47 @@ int main (int argc, char* argv[])
         
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. \n", t, hostname, rank, pid);
     
-    // 1. Создаём массив
+    
+    
     double* data;
-    int numElements = 100;
-    int dataSize = numElements * sizeof(double);
-    data = (double*)malloc(dataSize);
+    int numElements;
+    for(numElements = 100; numElements <= 1000; numElements+=100)
+    {        
+        int dataSize = numElements * sizeof(double);
+        data = (double*)malloc(dataSize);
 
-    // Инициализируем массив на узле 0
-    if (rank == 0)
-    {
-        for(int i = 0; i<numElements; i++)
+        // Инициализируем массив на узле 0
+        if (rank == 0)
         {
-            data[i] = i;
-            fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
+            for(int i = 0; i<numElements; i++)
+            {
+                data[i] = i;                
+            }
+        }        
+
+        MPI_Barrier(MPI_COMM_WORLD);
+        MPI_Status status;
+        int tag0 = 0;        
+
+        double tStart = MPI_Wtime();
+        if(rank==0)
+        {
+            MPI_Send(data, numElements, MPI_DOUBLE, 1, tag0, MPI_COMM_WORLD);
+        }
+        if(rank==1)
+        {
+            MPI_Recv(data, numElements, MPI_DOUBLE, 0, tag0, MPI_COMM_WORLD, &status);
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+        double tEnd = MPI_Wtime();
+        
+        if(rank==0)
+        {
+            fprintf(stderr, "%d %lf\n", numElements, tEnd-tStart);
         }
     }
-    
-    /*for(int i = 0; i<numElements; i++)
-    {            
-        fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
-    }*/
 
-    MPI_Barrier(MPI_COMM_WORLD);
-    MPI_Status status;
-    int tag0 = 0;
-    //MPI_Sendrecv(data, numElements, MPI_DOUBLE, 1, 10, data, numElements, MPI_DOUBLE, 0, 10, MPI_COMM_WORLD, &status);
-    
-    double tStart = MPI_Wtime();
-    if(rank==0)
-    {
-        MPI_Send(data, numElements, MPI_DOUBLE, 1, tag0, MPI_COMM_WORLD);
-    }
-    if(rank==1)
-    {
-        MPI_Recv(data, numElements, MPI_DOUBLE, 0, tag0, MPI_COMM_WORLD, &status);
-    }
-    MPI_Barrier(MPI_COMM_WORLD);
-    double tEnd = MPI_Wtime();
-    
-    if(rank==0)
-    {
-        fprintf(stderr, "%d %lf\n", numElements, tEnd-tStart);
-    }
-    
+        
 
     /*for(int i = 0; i<numElements; i++)
     {            
