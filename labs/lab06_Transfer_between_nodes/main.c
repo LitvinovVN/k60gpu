@@ -35,7 +35,7 @@ int main (int argc, char* argv[])
 
     for(numElements = 10000; numElements <= 100000; numElements+=10000)
     {
-        for(k = 0; k <= 100; k++)
+        for(k = 0; k < 100; k++)
         {
             int dataSize = numElements * sizeof(double);
             data = (double*)malloc(dataSize);
