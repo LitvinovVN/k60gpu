@@ -94,11 +94,16 @@ int main (int argc, char* argv[])
                     dtime[k]=dtime[j];
                     dtime[j]=temp;
                     }
-                }
-                
-                fprintf(stderr, "k=%d, %lf\n", k, dtime[k]);                              
+                }           
+                                          
 
             }
+
+            for(k = 0; k < 100; k++)
+            {
+                fprintf(stderr, "k=%d, %lf\n", k, dtime[k]);
+            }
+            
 
             double Min = dtime[99];
             double Max = dtime[0];
