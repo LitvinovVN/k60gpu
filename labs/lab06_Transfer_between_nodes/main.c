@@ -28,7 +28,7 @@ int main (int argc, char* argv[])
     
     double* data;
     int numElements;
-    for(numElements = 1000; numElements <= 10000; numElements+=1000)
+    for(numElements = 1000; numElements <= 100000; numElements+=1000)
     {        
         int dataSize = numElements * sizeof(double);
         data = (double*)malloc(dataSize);
