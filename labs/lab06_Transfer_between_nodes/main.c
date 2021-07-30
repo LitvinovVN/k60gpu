@@ -28,6 +28,9 @@ int main (int argc, char* argv[])
     
     double* data;
     int numElements;
+    MPI_Status status;
+    int tag0 = 0;
+    
     for(numElements = 1000; numElements <= 100000; numElements+=1000)
     {        
         int dataSize = numElements * sizeof(double);
@@ -42,9 +45,7 @@ int main (int argc, char* argv[])
             }
         }        
 
-        MPI_Barrier(MPI_COMM_WORLD);
-        MPI_Status status;
-        int tag0 = 0;        
+        MPI_Barrier(MPI_COMM_WORLD);                
 
         double tStart = MPI_Wtime();
         if(rank==0)
