@@ -131,8 +131,8 @@ int main (int argc, char* argv[])
             // Вычисление скорости передачи данных между узлами GBytesSec
             double GBytesSec = ElementsSec * sizeof(double) / 1024 / 1024 / 1024;
 
-            fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf, ElementsSec=%lf,
-                    GBytesSec=%lf\n", numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev, ElementsSec, GBytesSec);
+            fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf, ElementsSec=%lf, GBytesSec=%lf\n",
+                     numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev, ElementsSec, GBytesSec);
                 
             }
         
