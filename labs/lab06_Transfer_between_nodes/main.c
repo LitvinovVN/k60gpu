@@ -113,7 +113,7 @@ int main (int argc, char* argv[])
         double Variance = VarSum / 99;
 
         // Вычисление среднего квадратичного отклонения StdDev
-        double StdDev = math.sqrt(Variance);
+        double StdDev = sqrt(Variance);
 
         if(rank==0)
             {
