@@ -68,10 +68,10 @@ int main (int argc, char* argv[])
             // Получение экспериментальных данных: вычисление времени работы для каждого numElements, сохранение результатов в массив dtime
             dtime[k] = tEnd - tStart;
 
-            if(rank==0)
+            /*if(rank==0)
             {
                 fprintf(stderr, "%d %d %lf\n", numElements, k, dtime[k]);
-            }
+            }*/
              
         }
 
@@ -105,9 +105,9 @@ int main (int argc, char* argv[])
             }
             
 
-            double Min = dtime[99];
-            double Max = dtime[0];
-            double Perc95 = dtime[5];
+            double Min = dtime[0];
+            double Max = dtime[99];
+            double Perc95 = dtime[94];
 
             // Вычисление среднего значения AvgDtime
             double AvgDtime = Sum/100;
