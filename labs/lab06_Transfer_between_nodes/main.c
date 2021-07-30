@@ -46,7 +46,7 @@ int main (int argc, char* argv[])
     }
 
     MPI_sendrecv(data, numElements, MPI_DOUBLE);
-    MPI_Barrier();
+    MPI_Barrier(MPI_COMM_WORLD);
 
 
     MPI_Finalize();
