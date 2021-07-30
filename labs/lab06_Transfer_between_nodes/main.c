@@ -74,54 +74,56 @@ int main (int argc, char* argv[])
             }
              
         }
-        
-        double Sum = 0;
-        // Обработка результатов эксперимента
-        
-        for(k = 0; k < 100; k++)
-        {
-            // Вычисление суммы элементов
-            Sum = Sum + dtime[k];
-
-            // Упорядочивание элементов массива по возрастанию
-                for(int j=k; j<100; j++)
-            {
-                if(dtime[k]>dtime[j])
-                {
-                int temp=dtime[k];
-                dtime[k]=dtime[j];
-                dtime[j]=temp;
-                }
-            }
-
-            fprintf(stderr, "k=%d, %lf\n", k, dtime[k]);
-
-        }
-
-        double Min = dtime[0];
-        double Max = dtime[99];
-        double Perc95 = dtime[94];
-
-        // Вычисление среднего значения AvgDtime
-        double AvgDtime = Sum/100;
-
-        // Вычисление дисперсии Variance
-        double VarSum = 0;
-        
-        for(k = 0; k < 100; k++)
-        {
-            VarSum = VarSum + (dtime[k] - AvgDtime);
-        }
-        
-        double Variance = VarSum / 99;
-
-        // Вычисление среднего квадратичного отклонения StdDev
-        double StdDev = sqrt(abs(Variance));
 
         if(rank==0)
+        {
+            double Sum = 0;
+            // Обработка результатов эксперимента
+            
+            for(k = 0; k < 100; k++)
             {
-                fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf\n", numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev);
+                // Вычисление суммы элементов
+                Sum = Sum + dtime[k];
+
+                // Упорядочивание элементов массива по возрастанию
+                    for(int j=k; j<100; j++)
+                {
+                    if(dtime[k]>dtime[j])
+                    {
+                    int temp=dtime[k];
+                    dtime[k]=dtime[j];
+                    dtime[j]=temp;
+                    }
+                }
+                
+                fprintf(stderr, "k=%d, %lf\n", k, dtime[k]);                              
+
             }
+
+            double Min = dtime[0];
+            double Max = dtime[99];
+            double Perc95 = dtime[94];
+
+            // Вычисление среднего значения AvgDtime
+            double AvgDtime = Sum/100;
+
+            // Вычисление дисперсии Variance
+            double VarSum = 0;
+            
+            for(k = 0; k < 100; k++)
+            {
+                VarSum = VarSum + (dtime[k] - AvgDtime);
+            }
+            
+            double Variance = VarSum / 99;
+
+            // Вычисление среднего квадратичного отклонения StdDev
+            double StdDev = sqrt(abs(Variance));
+
+            fprintf(stderr, "numElements=%d, AvgDtime=%lf, Min=%lf, Max=%lf, Perc95=%lf, Variance=%lf, StdDev=%lf\n", numElements, AvgDtime, Min, Max, Perc95, Variance, StdDev);
+                
+            }
+        
       
     }
 
