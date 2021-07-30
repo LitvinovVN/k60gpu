@@ -99,10 +99,10 @@ int main (int argc, char* argv[])
 
             }
 
-            for(k = 0; k < 100; k++)
+            /*for(k = 0; k < 100; k++)
             {
                 fprintf(stderr, "k=%d, %lf\n", k, dtime[k]);
-            }
+            }*/
             
 
             double Min = dtime[0];
