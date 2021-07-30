@@ -90,7 +90,7 @@ int main (int argc, char* argv[])
                 {
                     if(dtime[k]>dtime[j])
                     {
-                    int temp=dtime[k];
+                    double temp=dtime[k];
                     dtime[k]=dtime[j];
                     dtime[j]=temp;
                     }
