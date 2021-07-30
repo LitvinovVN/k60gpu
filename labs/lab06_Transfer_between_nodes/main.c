@@ -51,6 +51,10 @@ int main (int argc, char* argv[])
     
     MPI_Barrier(MPI_COMM_WORLD);
 
+    for(int i = 0; i<numElements; i++)
+    {            
+        fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
+    }
 
     MPI_Finalize();
     return 0;
