@@ -70,7 +70,7 @@ int main (int argc, char* argv[])
 
             if(rank==0)
             {
-                //fprintf(stderr, "%d %d %lf\n", numElements, k, dtime[k]);
+                fprintf(stderr, "%d %d %lf\n", numElements, k, dtime[k]);
             }
              
         }
@@ -100,9 +100,9 @@ int main (int argc, char* argv[])
 
             }
 
-            double Min = dtime[0];
-            double Max = dtime[99];
-            double Perc95 = dtime[94];
+            double Min = dtime[99];
+            double Max = dtime[0];
+            double Perc95 = dtime[5];
 
             // Вычисление среднего значения AvgDtime
             double AvgDtime = Sum/100;
