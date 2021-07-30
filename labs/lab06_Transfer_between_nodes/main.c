@@ -45,7 +45,10 @@ int main (int argc, char* argv[])
         fprintf(stderr, "Node: %d. data[%d] %lf. \n", rank, i, data[i]);
     }
 
-    MPI_Sendrecv(data, numElements, MPI_DOUBLE);
+    MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Status status;
+    MPI_Sendrecv(data, numElements, MPI_DOUBLE, 1, 10, data, numElements, MPI_DOUBLE, 0, 11, MPI_COMM_WORLD, &status);
+    
     MPI_Barrier(MPI_COMM_WORLD);
 
 
