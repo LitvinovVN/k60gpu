@@ -47,7 +47,7 @@ int main (int argc, char* argv[])
 
     MPI_Barrier(MPI_COMM_WORLD);
     MPI_Status status;
-    MPI_Sendrecv(data, numElements, MPI_DOUBLE, 1, 10, data, numElements, MPI_DOUBLE, 0, 11, MPI_COMM_WORLD, &status);
+    MPI_Sendrecv(data, numElements, MPI_DOUBLE, 1, 10, data, numElements, MPI_DOUBLE, 0, 10, MPI_COMM_WORLD, &status);
     
     MPI_Barrier(MPI_COMM_WORLD);
 
