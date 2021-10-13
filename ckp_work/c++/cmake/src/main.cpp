@@ -1,13 +1,14 @@
 ﻿#include <iostream>
 #include <chrono>
 
-using namespace std;
-
-
+#include "testFunctions.cpp"
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	std::cout << "Hello CMake." << std::endl;
 	
+	auto result = testFunction1(2, 5);
+	std::cout << "testFunction1(2, 5) returns " << result << std::endl;
+
 	return 0;
 }

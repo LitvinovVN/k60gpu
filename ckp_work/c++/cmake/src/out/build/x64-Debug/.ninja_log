@@ -1,0 +1,15 @@
+# ninja log v5
+0	7	0	clean	9992afb1f91dc381
+3	58	6558363039740555	CMakeFiles/test_cmake.dir/testFunctions.cpp.obj	11dadff89ca18bf5
+1	494	6558363225267835	CMakeFiles/test_cmake.dir/main.cpp.obj	8370ebc9380e92e
+0	9	0	clean	9992afb1f91dc381
+4	58	6558363878542099	CMakeFiles/test_cmake.dir/testFunctions.cpp.obj	11dadff89ca18bf5
+0	464	6558363882592333	CMakeFiles/test_cmake.dir/main.cpp.obj	8370ebc9380e92e
+0	11	0	clean	9992afb1f91dc381
+4	56	6558364010733527	CMakeFiles/test_cmake.dir/testFunctions.cpp.obj	11dadff89ca18bf5
+1	467	6558364014814481	CMakeFiles/test_cmake.dir/main.cpp.obj	8370ebc9380e92e
+468	777	6558364017751569	test_cmake.exe	df39a344d07a8612
+0	14	0	clean	9992afb1f91dc381
+4	74	6558364865096983	CMakeFiles/test_cmake.dir/testFunctions.cpp.obj	11dadff89ca18bf5
+0	514	6558364869436986	CMakeFiles/test_cmake.dir/main.cpp.obj	8370ebc9380e92e
+514	689	6558364870906968	test_cmake.exe	df39a344d07a8612
