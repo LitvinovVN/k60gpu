@@ -1,7 +1,7 @@
 #include "testFunctions.h"
 
-#include "..\Grid3DSrc\ClassA.cpp"
-#include "..\Grid3DSrc\ClassB.cpp"
+#include "../Grid3DSrc/ClassA.cpp"
+#include "../Grid3DSrc/ClassB.cpp"
 
 
 void testFunction1(int a, int b)
