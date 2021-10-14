@@ -19,6 +19,8 @@ void testFunction2()
 
 void testFunction3()
 {
-	ClassB c1{ 777.777 };
+	ClassB c1;
+	c1.value = 777.7;
+	c1.valueClassA.value = 888.8;
 	c1.print();
 }
