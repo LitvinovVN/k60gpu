@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 
-#include "tests\testFunctions.h"
+#include "tests/testFunctions.h"
 
 
 int main()
