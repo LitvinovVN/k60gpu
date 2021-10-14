@@ -1,7 +1,0 @@
-# ninja log v5
-6	1007	655908863	CMakeFiles/test_cmake.dir/Grid3DSrc/ClassB.cpp.obj	a76a71162261122a
-4	1053	655908863	CMakeFiles/test_cmake.dir/main.cpp.obj	30513569576a0057
-1	1117	655908863	CMakeFiles/test_cmake.dir/tests/testFunctions.cpp.obj	6710f6e618406ed9
-8	1176	655908863	CMakeFiles/test_cmake.dir/Grid3DSrc/ClassA.cpp.obj	88f596178296bdb8
-10	1230	655908863	CMakeFiles/test_cmake.dir/Grid3DSrc/Classes.cpp.obj	2049f73ea8008928
-1231	1584	655908864	test_cmake.exe	43f8dddf422734f7
