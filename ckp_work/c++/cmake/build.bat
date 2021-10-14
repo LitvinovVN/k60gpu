@@ -4,4 +4,4 @@ cmake ../src
 cmake --build .
 
 cd Debug
-test_cmake.exe
+myApp.exe
