@@ -52,7 +52,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 10.2.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -88,39 +87,24 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <CudaCompile>
-      <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(Include)</Include>
-      <Defines>%(Defines);_WINDOWS;CMAKE_INTDIR="Debug"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 -Xcompiler="/EHsc -Zi -Ob0"</AdditionalOptions>
-      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
-      <CudaRuntime>Static</CudaRuntime>
-      <GPUDebugInfo>false</GPUDebugInfo>
-      <Optimization>Od</Optimization>
-      <Runtime>MDd</Runtime>
-      <RuntimeChecks>RTC1</RuntimeChecks>
-      <TargetMachinePlatform>64</TargetMachinePlatform>
-      <TypeInfo>true</TypeInfo>
-      <UseHostInclude>false</UseHostInclude>
-      <Warning>W3</Warning>
-    </CudaCompile>
     <Midl>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
@@ -130,7 +114,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -142,46 +126,28 @@
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <CudaCompile>
-      <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(Include)</Include>
-      <Defines>%(Defines);_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 -Xcompiler="/EHsc -Ob2"</AdditionalOptions>
-      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
-      <CudaRuntime>Static</CudaRuntime>
-      <GPUDebugInfo>false</GPUDebugInfo>
-      <Optimization>O2</Optimization>
-      <Runtime>MD</Runtime>
-      <TargetMachinePlatform>64</TargetMachinePlatform>
-      <TypeInfo>true</TypeInfo>
-      <UseHostInclude>false</UseHostInclude>
-      <Warning>W3</Warning>
-    </CudaCompile>
     <Midl>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
@@ -191,7 +157,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -203,46 +169,28 @@
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <CudaCompile>
-      <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(Include)</Include>
-      <Defines>%(Defines);_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 -Xcompiler="/EHsc -Ob1"</AdditionalOptions>
-      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
-      <CudaRuntime>Static</CudaRuntime>
-      <GPUDebugInfo>false</GPUDebugInfo>
-      <Optimization>O1</Optimization>
-      <Runtime>MD</Runtime>
-      <TargetMachinePlatform>64</TargetMachinePlatform>
-      <TypeInfo>true</TypeInfo>
-      <UseHostInclude>false</UseHostInclude>
-      <Warning>W3</Warning>
-    </CudaCompile>
     <Midl>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
@@ -252,7 +200,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -264,45 +212,27 @@
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <CudaCompile>
-      <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(Include)</Include>
-      <Defines>%(Defines);_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 -Xcompiler="/EHsc -Zi -Ob1"</AdditionalOptions>
-      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
-      <CudaRuntime>Static</CudaRuntime>
-      <GPUDebugInfo>false</GPUDebugInfo>
-      <Optimization>O2</Optimization>
-      <Runtime>MD</Runtime>
-      <TargetMachinePlatform>64</TargetMachinePlatform>
-      <TypeInfo>true</TypeInfo>
-      <UseHostInclude>false</UseHostInclude>
-      <Warning>W3</Warning>
-    </CudaCompile>
     <Midl>
       <AdditionalIncludeDirectories>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
@@ -312,7 +242,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64\cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -324,13 +254,9 @@
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="..\CUDA_CMAKE.cu">
+    <CustomBuild Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\CUDA_CMAKE.cu">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building NVCC (Device) object CMakeFiles/CUDA_CMAKE.dir/$(Configuration)/CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd "D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir"
@@ -422,7 +348,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCUDACompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\detect_cuda_compute_capabilities.cu;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/! MyProjects/k60gpu/ckp_work/cuda/CUDA_CMAKE/CMakeLists.txt</Message>
@@ -435,7 +361,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCUDACompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\detect_cuda_compute_capabilities.cu;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/! MyProjects/k60gpu/ckp_work/cuda/CUDA_CMAKE/CMakeLists.txt</Message>
@@ -448,7 +374,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCUDACompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\detect_cuda_compute_capabilities.cu;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/! MyProjects/k60gpu/ckp_work/cuda/CUDA_CMAKE/CMakeLists.txt</Message>
@@ -461,7 +387,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCUDACompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\detect_cuda_compute_capabilities.cu;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\run_nvcc.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindCUDA\select_compute_arch.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeCXXCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeRCCompiler.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3.21.3\CMakeSystem.cmake;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cmake.pre-gen;D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
@@ -480,6 +406,5 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 10.2.targets" />
   </ImportGroup>
 </Project>

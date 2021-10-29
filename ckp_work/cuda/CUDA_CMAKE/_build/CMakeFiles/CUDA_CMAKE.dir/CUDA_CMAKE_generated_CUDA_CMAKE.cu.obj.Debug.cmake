@@ -72,13 +72,13 @@ set(generated_file_internal "D:/! MyProjects/k60gpu/ckp_work/cuda/CUDA_CMAKE/_bu
 set(generated_cubin_file_internal "D:/! MyProjects/k60gpu/ckp_work/cuda/CUDA_CMAKE/_build/CMakeFiles/CUDA_CMAKE.dir//$(Configuration)/CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj.cubin.txt") # path
 
 set(CUDA_NVCC_EXECUTABLE "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/bin/nvcc.exe") # path
-set(CUDA_NVCC_FLAGS  ;; ) # list
+set(CUDA_NVCC_FLAGS -gencode;arch=compute_35,code=sm_35 ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
-set(nvcc_flags -m64) # list
+set(nvcc_flags -m64;--std;c++11) # list
 set(CUDA_NVCC_INCLUDE_DIRS [==[C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/include;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/include]==]) # list (needs to be in lua quotes to address backslashes)
 string(REPLACE "\\" "/" CUDA_NVCC_INCLUDE_DIRS "${CUDA_NVCC_INCLUDE_DIRS}")
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[]==]) # list (needs to be in lua quotes see #16510 ).
@@ -105,7 +105,7 @@ endif()
 
 # This is the list of host compilation flags.  It C or CXX should already have
 # been chosen by FindCUDA.cmake.
-set(CMAKE_HOST_FLAGS /DWIN32 /D_WINDOWS /W3 /GR /EHsc )
+set(CMAKE_HOST_FLAGS  )
 set(CMAKE_HOST_FLAGS_DEBUG /MDd /Zi /Ob0 /Od /RTC1)
 set(CMAKE_HOST_FLAGS_RELEASE /MD /O2 /Ob2 /DNDEBUG)
 set(CMAKE_HOST_FLAGS_MINSIZEREL /MD /O1 /Ob1 /DNDEBUG)

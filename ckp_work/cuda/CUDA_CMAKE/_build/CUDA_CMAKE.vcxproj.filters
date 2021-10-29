@@ -6,7 +6,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\CUDA_CMAKE.cu">
+    <CustomBuild Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\CUDA_CMAKE.cu">
       <Filter>Source Files</Filter>
     </CustomBuild>
     <CustomBuild Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\CMakeLists.txt" />
