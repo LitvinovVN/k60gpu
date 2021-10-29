@@ -5,24 +5,22 @@
 		{
 			"compiler" : 
 			{
-				"id" : "NVIDIA",
+				"id" : "MSVC",
 				"implicit" : 
 				{
 					"includeDirectories" : [],
-					"linkDirectories" : 
-					[
-						"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/lib/x64"
-					],
+					"linkDirectories" : [],
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
-				"path" : "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/bin/nvcc.exe",
-				"version" : "10.2.89"
+				"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe",
+				"version" : "19.29.30136.0"
 			},
-			"language" : "CUDA",
+			"language" : "C",
 			"sourceFileExtensions" : 
 			[
-				"cu"
+				"c",
+				"m"
 			]
 		},
 		{
@@ -48,7 +46,6 @@
 				"cc",
 				"cpp",
 				"cxx",
-				"m",
 				"mm",
 				"mpp",
 				"CPP"

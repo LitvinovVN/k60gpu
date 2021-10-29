@@ -1314,18 +1314,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CUDA_GPU_DETECT_OUTPUT",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Returned GPU architectures from detect_gpus tool"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "7.5"
-		},
-		{
 			"name" : "CUDA_HOST_COMPILATION_CPP",
 			"properties" : 
 			[

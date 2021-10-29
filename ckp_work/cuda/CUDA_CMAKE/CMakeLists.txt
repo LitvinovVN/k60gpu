@@ -1,11 +1,18 @@
 cmake_minimum_required (VERSION 2.8)
 
-project ("CUDA_CMAKE" LANGUAGES CXX CUDA)
+project (CUDA_CMAKE)
 
-find_package(CUDA REQUIRED)
+set(CMAKE_CXX_FLAGS "-std=c++11")
+
+find_package(CUDA QUIET REQUIRED)
 message(STATUS "Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}")
+# Pass options to NVCC
+    set(
+    CUDA_NVCC_FLAGS
+    ${CUDA_NVCC_FLAGS};
+    -gencode arch=compute_35,code=sm_35
+    )
 
-cuda_select_nvcc_arch_flags(ARCH_FLAGS) # optional argument for arch to add
 
 # Добавьте источник в исполняемый файл этого проекта.
 cuda_add_executable (CUDA_CMAKE "CUDA_CMAKE.cu" "CUDA_CMAKE.h")

@@ -15,9 +15,7 @@
 		[
 			"add_executable",
 			"cuda_add_executable",
-			"target_link_libraries",
-			"include_directories",
-			"CUDA_ADD_CUDA_INCLUDE_ONCE"
+			"target_link_libraries"
 		],
 		"files" : 
 		[
@@ -32,7 +30,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 11,
+				"line" : 18,
 				"parent" : 0
 			},
 			{
@@ -46,18 +44,6 @@
 				"file" : 0,
 				"line" : 2046,
 				"parent" : 1
-			},
-			{
-				"command" : 4,
-				"file" : 0,
-				"line" : 2023,
-				"parent" : 1
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 1363,
-				"parent" : 4
 			}
 		]
 	},
@@ -67,7 +53,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
+				"fragment" : "-std=c++11 /MDd /Zi /Ob0 /Od /RTC1",
 				"role" : "flags"
 			},
 			{
@@ -75,20 +61,8 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-LIBPATH:C:\\PROGRA~1\\NVIDIA~2\\CUDA\\v10.2\\lib\\x64",
-				"role" : "libraryPath"
-			},
-			{
 				"backtrace" : 3,
 				"fragment" : "\"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v10.2\\lib\\x64\\cudart_static.lib\"",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "cudadevrt.lib",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "cudart_static.lib",
 				"role" : "libraries"
 			},
 			{
