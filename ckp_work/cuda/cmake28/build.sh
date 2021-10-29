@@ -5,4 +5,4 @@ cd _build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 
-./CUDA_CMAKE
+./cpp11

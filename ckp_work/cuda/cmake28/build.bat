@@ -4,4 +4,4 @@ cmake ..  -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 
 cd Debug
-CUDA_CMAKE.exe
+cpp11.exe

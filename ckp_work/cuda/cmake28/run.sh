@@ -1,1 +1,1 @@
-mpirun -np 1 ./_build/CUDA_CMAKE
+mpirun -np 1 ./_build/cpp11
