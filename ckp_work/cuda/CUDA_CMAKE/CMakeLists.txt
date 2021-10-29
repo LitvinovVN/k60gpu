@@ -2,16 +2,6 @@ cmake_minimum_required (VERSION 2.8)
 
 project ("CUDA_CMAKE" LANGUAGES CXX CUDA)
 
-enable_language(CUDA)
-
-include(CheckLanguage)
-check_language(CUDA)
-
-if(NOT DEFINED CMAKE_CUDA_STANDARD)
-    set(CMAKE_CUDA_STANDARD 11)
-    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
-endif()
-
 find_package(CUDA REQUIRED)
 message(STATUS "Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}")
 
