@@ -8,7 +8,7 @@
 					"build" : ".",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.8"
+						"string" : "2.8"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
