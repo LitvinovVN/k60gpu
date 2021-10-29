@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\CUDA_CMAKE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\CUDA_CMAKE.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\CUDA_CMAKE.dir\$(Configuration)\CUDA_CMAKE_generated_CUDA_CMAKE.cu.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D733F71E-F795-33FE-ABA4-60B5F1365950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{38D49D5C-C33E-3CD2-9396-270B1EB4E873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{599F3DC2-326A-3C20-8461-9E44AACC4790}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

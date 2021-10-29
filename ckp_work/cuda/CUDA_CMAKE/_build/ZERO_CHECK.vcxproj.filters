@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\! MyProjects\k60gpu\ckp_work\cuda\CUDA_CMAKE\_build\CMakeFiles\3b92989cf6b65314c09ab8842734049e\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6B8E1FF4-C8FE-3557-8876-CF15D47FD7E8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
