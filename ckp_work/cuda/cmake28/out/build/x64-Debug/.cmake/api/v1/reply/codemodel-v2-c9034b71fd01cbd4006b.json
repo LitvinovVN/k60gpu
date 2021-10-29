@@ -1,0 +1,55 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cpp11",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cpp11::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpp11-Debug-668d9124a6fe37bb217f.json",
+					"name" : "cpp11",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/! MyProjects/k60gpu/ckp_work/cuda/cmake28/out/build/x64-Debug",
+		"source" : "D:/! MyProjects/k60gpu/ckp_work/cuda/cmake28"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

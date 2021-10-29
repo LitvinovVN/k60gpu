@@ -1,0 +1,1 @@
+mpirun -np 1 ./_build/CUDA_CMAKE

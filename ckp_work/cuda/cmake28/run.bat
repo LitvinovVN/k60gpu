@@ -1,0 +1,1 @@
+mpiexec -np 2 ./_build/Debug/CUDA_CMAKE.exe
